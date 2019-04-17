@@ -33,18 +33,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.1">
     
     
       
-        <title>larq.constraints - Larq</title>
+        <title>Callbacks - Larq</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.3020aac5.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.3020aac5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -53,7 +53,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.01ccdecf.js"></script>
+      <script src="../assets/javascripts/modernizr.01ccdecf.js"></script>
     
     
       
@@ -62,7 +62,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#larqconstraints" tabindex="1" class="md-skip">
+      <a href="#larqcallbacks" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -113,7 +113,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Larq" class="md-header-nav__button md-logo">
+        <a href=".." title="Larq" class="md-header-nav__button md-logo">
           
             <i class="md-icon">developer_board</i>
           
@@ -129,7 +129,7 @@
               Larq
             </span>
             <span class="md-header-nav__topic">
-              larq.constraints
+              Callbacks
             </span>
           
         </div>
@@ -196,7 +196,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -205,7 +207,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../.." title="Home" class="md-tabs__link">
+        <a href=".." title="Home" class="md-tabs__link">
           Home
         </a>
       
@@ -218,7 +220,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../examples/mnist/" title="Examples" class="md-tabs__link">
+        <a href="../examples/mnist/" title="Examples" class="md-tabs__link">
           Examples
         </a>
       
@@ -231,7 +233,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../layers/" title="Documentation" class="md-tabs__link">
+        <a href="../layers/" title="Documentation" class="md-tabs__link md-tabs__link--active">
           Documentation
         </a>
       
@@ -252,7 +254,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Larq" class="md-nav__button md-logo">
+    <a href=".." title="Larq" class="md-nav__button md-logo">
       
         <i class="md-icon">developer_board</i>
       
@@ -307,7 +309,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Getting Started" class="md-nav__link">
+    <a href=".." title="Getting Started" class="md-nav__link">
       Getting Started
     </a>
   </li>
@@ -338,7 +340,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../contributing/" title="Contributing Guide" class="md-nav__link">
+    <a href="../contributing/" title="Contributing Guide" class="md-nav__link">
       Contributing Guide
     </a>
   </li>
@@ -350,7 +352,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../code_of_conduct/" title="Code of Conduct" class="md-nav__link">
+    <a href="../code_of_conduct/" title="Code of Conduct" class="md-nav__link">
       Code of Conduct
     </a>
   </li>
@@ -391,7 +393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../examples/mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">
+    <a href="../examples/mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">
       Introduction to BNNs with Larq
     </a>
   </li>
@@ -403,7 +405,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../examples/binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-nav__link">
+    <a href="../examples/binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-nav__link">
       Binarynet on CIFAR10
     </a>
   </li>
@@ -415,7 +417,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../examples/binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link">
+    <a href="../examples/binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link">
       Binarynet on CIFAR10 (Advanced)
     </a>
   </li>
@@ -430,10 +432,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Documentation
@@ -451,7 +455,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../layers/" title="Layers" class="md-nav__link">
+    <a href="../layers/" title="Layers" class="md-nav__link">
       Layers
     </a>
   </li>
@@ -463,7 +467,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../quantizers/" title="Quantizers" class="md-nav__link">
+    <a href="../quantizers/" title="Quantizers" class="md-nav__link">
       Quantizers
     </a>
   </li>
@@ -475,7 +479,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../activations/" title="Activations" class="md-nav__link">
+    <a href="../activations/" title="Activations" class="md-nav__link">
       Activations
     </a>
   </li>
@@ -487,7 +491,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../constraints/" title="Constraints" class="md-nav__link">
+    <a href="../constraints/" title="Constraints" class="md-nav__link">
       Constraints
     </a>
   </li>
@@ -497,11 +501,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../callbacks/" title="Callbacks" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Callbacks
+      </label>
+    
+    <a href="./" title="Callbacks" class="md-nav__link md-nav__link--active">
       Callbacks
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quantizationlogger" title="QuantizationLogger" class="md-nav__link">
+    QuantizationLogger
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -511,7 +553,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../optimizers/" title="Optimizers" class="md-nav__link">
+    <a href="../optimizers/" title="Optimizers" class="md-nav__link">
       Optimizers
     </a>
   </li>
@@ -523,7 +565,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../models/" title="Models" class="md-nav__link">
+    <a href="../models/" title="Models" class="md-nav__link">
       Models
     </a>
   </li>
@@ -555,15 +597,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#weightclip" title="WeightClip" class="md-nav__link">
-    WeightClip
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#weight_clip" title="weight_clip" class="md-nav__link">
-    weight_clip
+  <a href="#quantizationlogger" title="QuantizationLogger" class="md-nav__link">
+    QuantizationLogger
   </a>
   
 </li>
@@ -585,36 +620,36 @@
               
                 
                 
-                <h1 id="larqconstraints">larq.constraints<a class="headerlink" href="#larqconstraints" title="Permanent link">&para;</a></h1>
-<p>Functions from the <code>constraints</code> module allow setting constraints
-(eg. weight clipping) on network parameters during optimization.</p>
-<p>The penalties are applied on a per-layer basis. The exact API will depend on the layer,
-but the layers <code>QuantDense</code>, <code>QuantConv1D</code>, <code>QuantConv2D</code> and <code>QuantConv3D</code> have a
-unified API.</p>
-<p>These layers expose 2 keyword arguments:</p>
+                <h1 id="larqcallbacks">larq.callbacks<a class="headerlink" href="#larqcallbacks" title="Permanent link">&para;</a></h1>
+<h2 id="quantizationlogger">QuantizationLogger<a class="headerlink" href="#quantizationlogger" title="Permanent link">&para;</a></h2>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantizationLogger</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
+</pre></div>
+Callback that adds quantization specific metrics.</p>
+<div class="admonition note">
+<p>In order for metrics to be picked up by TensorBoard this callback needs to be
+applied before the TensorBoard callback and use the same update frequency.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="codehilite"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">QuantizationLogger</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<p><strong>Metrics</strong></p>
 <ul>
-<li><code>kernel_constraint</code> for the main weights matrix</li>
-<li><code>bias_constraint</code> for the bias.</li>
+<li><code>changed_quantization_ration</code>: The ration of quantized weights in each layer that
+    changed during the weight update.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">larq</span> <span class="kn">as</span> <span class="nn">lq</span>
-
-<span class="n">lq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_constraint</span><span class="o">=</span><span class="s2">&quot;weight_clip&quot;</span><span class="p">)</span>
-<span class="n">lq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_constraint</span><span class="o">=</span><span class="n">lq</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">WeightClip</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
-</pre></div>
-
-<h2 id="weightclip">WeightClip<a class="headerlink" href="#weightclip" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">WeightClip</span><span class="p">(</span><span class="n">clip_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-Weight Clip constraint</p>
-<p>Constrains the weights incident to each hidden unit
-to be between <code>[-clip_value, clip_value]</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><code>clip_value</code>: The value to clip incoming weights.</li>
+<li><code>update_freq</code>: <code>'batch'</code> or integer. When using <code>'batch'</code>, computes the metrics after
+    each batch. If using an integer the callback will compute the metrics every
+    <code>update_freq</code> batches. Note that computing too frequently can slow down training.</li>
 </ul>
-<h2 id="weight_clip">weight_clip<a class="headerlink" href="#weight_clip" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">weight_clip</span><span class="p">(</span><span class="n">clip_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
                 
                   
                 
@@ -632,6 +667,41 @@ to be between <code>[-clip_value, clip_value]</code>.</p>
         
 <footer class="md-footer">
   
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../constraints/" title="Constraints" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Constraints
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../optimizers/" title="Optimizers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Optimizers
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -644,7 +714,7 @@ to be between <code>[-clip_value, clip_value]</code>.</p>
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/plumerai" class="md-footer-social__link fa fa-github"></a>
     
@@ -660,9 +730,9 @@ to be between <code>[-clip_value, clip_value]</code>.</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application.dc02f8ce.js"></script>
+      <script src="../assets/javascripts/application.dc02f8ce.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
       
