@@ -38,7 +38,7 @@
     
     
       
-        <title>Binarynet on CIFAR10 - Larq</title>
+        <title>Binarynet on CIFAR10 (Advanced) - Larq</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#binarynet-on-cifar10" tabindex="1" class="md-skip">
+      <a href="#binarynet-on-cifar10-advanced" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -129,7 +129,7 @@
               Larq
             </span>
             <span class="md-header-nav__topic">
-              Binarynet on CIFAR10
+              Binarynet on CIFAR10 (Advanced)
             </span>
           
         </div>
@@ -405,6 +405,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-nav__link">
+      Binarynet on CIFAR10
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -416,11 +428,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Binarynet on CIFAR10
+        Binarynet on CIFAR10 (Advanced)
       </label>
     
-    <a href="./" title="Binarynet on CIFAR10" class="md-nav__link md-nav__link--active">
-      Binarynet on CIFAR10
+    <a href="./" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link md-nav__link--active">
+      Binarynet on CIFAR10 (Advanced)
     </a>
     
       
@@ -441,8 +453,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">
-    Build BinaryNet
+  <a href="#build-binarynet" title="Build Binarynet" class="md-nav__link">
+    Build Binarynet
   </a>
   
 </li>
@@ -450,13 +462,6 @@
         <li class="md-nav__item">
   <a href="#model-training" title="Model Training" class="md-nav__link">
     Model Training
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-output" title="Model Output" class="md-nav__link">
-    Model Output
   </a>
   
 </li>
@@ -469,18 +474,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link">
-      Binarynet on CIFAR10 (Advanced)
-    </a>
   </li>
 
         
@@ -625,8 +618,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">
-    Build BinaryNet
+  <a href="#build-binarynet" title="Build Binarynet" class="md-nav__link">
+    Build Binarynet
   </a>
   
 </li>
@@ -634,13 +627,6 @@
         <li class="md-nav__item">
   <a href="#model-training" title="Model Training" class="md-nav__link">
     Model Training
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-output" title="Model Output" class="md-nav__link">
-    Model Output
   </a>
   
 </li>
@@ -662,34 +648,50 @@
               
                 
                 
-                <h1 id="binarynet-on-cifar10">BinaryNet on CIFAR10<a class="headerlink" href="#binarynet-on-cifar10" title="Permanent link">&para;</a></h1>
-<p><strong>Run this notebook here: <a href="https://mybinder.org/v2/gh/plumerai/larq/master?filepath=examples%2Fbinarynet_cifar10.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></strong></p>
-<p>In this example we demonstrate how to use Larq to build and train BinaryNet on the CIFAR10 dataset to achieve a validation accuracy approximately 83% on laptop hardware.
-On a Nvidia GTX 1050 Ti Max-Q it takes approximately 200 minutes to train. For simplicity, compared to the original papers <a href="https://arxiv.org/abs/1511.00363">BinaryConnect: Training Deep Neural Networks with binary weights during propagations</a>, and <a href="http://arxiv.org/abs/1602.02830">Binarized Neural Networks: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1</a>, we do not impliment learning rate scaling, or image whitening.</p>
+                <h1 id="binarynet-on-cifar10-advanced">BinaryNet on CIFAR10 (Advanced)<a class="headerlink" href="#binarynet-on-cifar10-advanced" title="Permanent link">&para;</a></h1>
+<p><strong>Run this notebook here: <a href="https://mybinder.org/v2/gh/plumerai/larq/master?filepath=examples%2Fbinarynet_advanced_cifar10.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></strong></p>
+<p>In this example we demonstrate how to use Larq to build and train BinaryNet on the CIFAR10 dataset to achieve a validation accuracy of around 90% using a heavy lifting GPU like a Nvidia V100.
+On a Nvidia V100 it takes approximately 250 minutes to train. Compared to the original papers, <a href="https://arxiv.org/abs/1511.00363">BinaryConnect: Training Deep Neural Networks with binary weights during propagations</a>, and <a href="http://arxiv.org/abs/1602.02830">Binarized Neural Networks: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1</a>, we do not implement image whitening, but we use image augmentation, and a stepped learning rate scheduler.</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">larq</span> <span class="kn">as</span> <span class="nn">lq</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 </pre></div>
 
 <h2 id="import-cifar10-dataset">Import CIFAR10 Dataset<a class="headerlink" href="#import-cifar10-dataset" title="Permanent link">&para;</a></h2>
-<p>We download and normalize the CIFAR10 dataset.</p>
-<div class="codehilite"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">cifar10</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-
-<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
-<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
-
-<span class="c1"># Normalize pixel values to be between -1 and 1</span>
-<span class="n">train_images</span><span class="p">,</span> <span class="n">test_images</span> <span class="o">=</span> <span class="n">train_images</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mi">1</span>
-
-<span class="n">train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
-<span class="n">test_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<p>Here we download the CIFAR10 dataset:</p>
+<div class="codehilite"><pre><span></span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">cifar10</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 </pre></div>
 
-<h2 id="build-binarynet">Build BinaryNet<a class="headerlink" href="#build-binarynet" title="Permanent link">&para;</a></h2>
-<p>Here we build the BinaryNet model layer by layer using the <a href="https://www.tensorflow.org/guide/keras">Keras Sequential API</a>.</p>
+<p>Next, we define our image augmentation technqiues, and create the dataset:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">resize_and_flip</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">255.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span>
+    <span class="k">if</span> <span class="n">training</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize_image_with_crop_or_pad</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random_crop</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">random_flip_left_right</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">labels</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
+    <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">training</span><span class="p">:</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">resize_and_flip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">training</span><span class="p">))</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+<h2 id="build-binarynet">Build Binarynet<a class="headerlink" href="#build-binarynet" title="Permanent link">&para;</a></h2>
+<p>Here we build the binarynet model layer by layer using a keras sequential model:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># All quantized layers except the first will use the same options</span>
 <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">input_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
               <span class="n">kernel_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
@@ -736,36 +738,36 @@ On a Nvidia GTX 1050 Ti Max-Q it takes approximately 200 minutes to train. For s
 <span class="p">])</span>
 </pre></div>
 
-<p>One can output a summary of the model:</p>
+<p>Larq allows you to print a summary of the model that includes bit-precision information:</p>
 <div class="codehilite"><pre><span></span><span class="n">lq</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>Layer                      Outputs              # 1-bit    # 32-bit
--------------------------  -----------------  ---------  ----------
-quant_conv2d_6             (-1, 30, 30, 128)       3456           0
-batch_normalization_v1_9   (-1, 30, 30, 128)          0         384
-quant_conv2d_7             (-1, 30, 30, 128)     147456           0
-max_pooling2d_3            (-1, 15, 15, 128)          0           0
-batch_normalization_v1_10  (-1, 15, 15, 128)          0         384
-quant_conv2d_8             (-1, 15, 15, 256)     294912           0
-batch_normalization_v1_11  (-1, 15, 15, 256)          0         768
-quant_conv2d_9             (-1, 15, 15, 256)     589824           0
-max_pooling2d_4            (-1, 7, 7, 256)            0           0
-batch_normalization_v1_12  (-1, 7, 7, 256)            0         768
-quant_conv2d_10            (-1, 7, 7, 512)      1179648           0
-batch_normalization_v1_13  (-1, 7, 7, 512)            0        1536
-quant_conv2d_11            (-1, 7, 7, 512)      2359296           0
-max_pooling2d_5            (-1, 3, 3, 512)            0           0
-batch_normalization_v1_14  (-1, 3, 3, 512)            0        1536
-flatten_1                  (-1, 4608)                 0           0
-quant_dense_3              (-1, 1024)           4718592           0
-batch_normalization_v1_15  (-1, 1024)                 0        3072
-quant_dense_4              (-1, 1024)           1048576           0
-batch_normalization_v1_16  (-1, 1024)                 0        3072
-quant_dense_5              (-1, 10)               10240           0
-batch_normalization_v1_17  (-1, 10)                   0          30
-activation_1               (-1, 10)                   0           0
-Total                                          10352000       11550
+<div class="codehilite"><pre><span></span>Layer                     Outputs              # 1-bit    # 32-bit
+------------------------  -----------------  ---------  ----------
+quant_conv2d              (-1, 30, 30, 128)       3456           0
+batch_normalization_v1    (-1, 30, 30, 128)          0         384
+quant_conv2d_1            (-1, 30, 30, 128)     147456           0
+max_pooling2d             (-1, 15, 15, 128)          0           0
+batch_normalization_v1_1  (-1, 15, 15, 128)          0         384
+quant_conv2d_2            (-1, 15, 15, 256)     294912           0
+batch_normalization_v1_2  (-1, 15, 15, 256)          0         768
+quant_conv2d_3            (-1, 15, 15, 256)     589824           0
+max_pooling2d_1           (-1, 7, 7, 256)            0           0
+batch_normalization_v1_3  (-1, 7, 7, 256)            0         768
+quant_conv2d_4            (-1, 7, 7, 512)      1179648           0
+batch_normalization_v1_4  (-1, 7, 7, 512)            0        1536
+quant_conv2d_5            (-1, 7, 7, 512)      2359296           0
+max_pooling2d_2           (-1, 3, 3, 512)            0           0
+batch_normalization_v1_5  (-1, 3, 3, 512)            0        1536
+flatten                   (-1, 4608)                 0           0
+quant_dense               (-1, 1024)           4718592           0
+batch_normalization_v1_6  (-1, 1024)                 0        3072
+quant_dense_1             (-1, 1024)           1048576           0
+batch_normalization_v1_7  (-1, 1024)                 0        3072
+quant_dense_2             (-1, 10)               10240           0
+batch_normalization_v1_8  (-1, 10)                   0          30
+activation                (-1, 10)                   0           0
+Total                                         10352000       11550
 
 Total params: 10363550
 Trainable params: 10355850
@@ -774,264 +776,31 @@ Non-trainable params: 7700
 
 
 <h2 id="model-training">Model Training<a class="headerlink" href="#model-training" title="Permanent link">&para;</a></h2>
-<p>Compile the model and train the model</p>
-<div class="codehilite"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">decay</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">),</span>
+<p>We compile and train the model as you are used to in Keras:</p>
+<div class="codehilite"><pre><span></span><span class="n">initial_lr</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">var_decay</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">initial_lr</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">var_decay</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">lq</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">XavierLearningRateScaling</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
     <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span>
     <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">trained_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-    <span class="n">train_images</span><span class="p">,</span> 
-    <span class="n">train_labels</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
-    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">),</span>
-    <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">lr_schedule</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">initial_lr</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="o">**</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">//</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">trained_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">train_dataset</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">train_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span>
+    <span class="n">validation_steps</span><span class="o">=</span><span class="n">test_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">lr_schedule</span><span class="p">)]</span>
 <span class="p">)</span>
 </pre></div>
-
-<div class="codehilite"><pre><span></span>Train on 50000 samples, validate on 10000 samples
-Epoch 1/100
-50000/50000 [==============================] - 131s 3ms/step - loss: 1.5733 - acc: 0.4533 - val_loss: 1.6368 - val_acc: 0.4244
-Epoch 2/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 1.1485 - acc: 0.6387 - val_loss: 1.8497 - val_acc: 0.3764
-Epoch 3/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.9641 - acc: 0.7207 - val_loss: 1.5696 - val_acc: 0.4794
-Epoch 4/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.8452 - acc: 0.7728 - val_loss: 1.5765 - val_acc: 0.4669
-Epoch 5/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.7553 - acc: 0.8114 - val_loss: 1.0653 - val_acc: 0.6928
-Epoch 6/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.6841 - acc: 0.8447 - val_loss: 1.0944 - val_acc: 0.6880
-Epoch 7/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.6356 - acc: 0.8685 - val_loss: 0.9909 - val_acc: 0.7317
-Epoch 8/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.5907 - acc: 0.8910 - val_loss: 0.9453 - val_acc: 0.7446
-Epoch 9/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.5610 - acc: 0.9043 - val_loss: 0.9441 - val_acc: 0.7460
-Epoch 10/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.5295 - acc: 0.9201 - val_loss: 0.8892 - val_acc: 0.7679
-Epoch 11/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.5100 - acc: 0.9309 - val_loss: 0.8808 - val_acc: 0.7818
-Epoch 12/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4926 - acc: 0.9397 - val_loss: 0.8404 - val_acc: 0.7894
-Epoch 13/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4807 - acc: 0.9470 - val_loss: 0.8600 - val_acc: 0.7928
-Epoch 14/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4661 - acc: 0.9529 - val_loss: 0.9046 - val_acc: 0.7732
-Epoch 15/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.4588 - acc: 0.9571 - val_loss: 0.8505 - val_acc: 0.7965
-Epoch 16/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4558 - acc: 0.9593 - val_loss: 0.8748 - val_acc: 0.7859
-Epoch 17/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4434 - acc: 0.9649 - val_loss: 0.9109 - val_acc: 0.7656
-Epoch 18/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4449 - acc: 0.9643 - val_loss: 0.8532 - val_acc: 0.7971
-Epoch 19/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4349 - acc: 0.9701 - val_loss: 0.8677 - val_acc: 0.7951
-Epoch 20/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4351 - acc: 0.9698 - val_loss: 0.9145 - val_acc: 0.7740
-Epoch 21/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4268 - acc: 0.9740 - val_loss: 0.8308 - val_acc: 0.8065
-Epoch 22/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4243 - acc: 0.9741 - val_loss: 0.8229 - val_acc: 0.8075
-Epoch 23/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4201 - acc: 0.9764 - val_loss: 0.8411 - val_acc: 0.8062
-Epoch 24/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4190 - acc: 0.9769 - val_loss: 0.8649 - val_acc: 0.7951
-Epoch 25/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4139 - acc: 0.9787 - val_loss: 0.8257 - val_acc: 0.8071
-Epoch 26/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4154 - acc: 0.9779 - val_loss: 0.8041 - val_acc: 0.8205
-Epoch 27/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4128 - acc: 0.9798 - val_loss: 0.8296 - val_acc: 0.8115
-Epoch 28/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4121 - acc: 0.9798 - val_loss: 0.8241 - val_acc: 0.8074
-Epoch 29/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4093 - acc: 0.9807 - val_loss: 0.8575 - val_acc: 0.7913
-Epoch 30/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4048 - acc: 0.9826 - val_loss: 0.8118 - val_acc: 0.8166
-Epoch 31/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4041 - acc: 0.9837 - val_loss: 0.8375 - val_acc: 0.8082
-Epoch 32/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4045 - acc: 0.9831 - val_loss: 0.8604 - val_acc: 0.8091
-Epoch 33/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4047 - acc: 0.9823 - val_loss: 0.8797 - val_acc: 0.7931
-Epoch 34/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4023 - acc: 0.9842 - val_loss: 0.8694 - val_acc: 0.8020
-Epoch 35/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.3995 - acc: 0.9858 - val_loss: 0.8161 - val_acc: 0.8186
-Epoch 36/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3976 - acc: 0.9859 - val_loss: 0.8495 - val_acc: 0.7988
-Epoch 37/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4021 - acc: 0.9847 - val_loss: 0.8542 - val_acc: 0.8062
-Epoch 38/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3939 - acc: 0.9869 - val_loss: 0.8347 - val_acc: 0.8122
-Epoch 39/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3955 - acc: 0.9856 - val_loss: 0.8521 - val_acc: 0.7993
-Epoch 40/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3907 - acc: 0.9885 - val_loss: 0.9023 - val_acc: 0.7992
-Epoch 41/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3911 - acc: 0.9873 - val_loss: 0.8597 - val_acc: 0.8010
-Epoch 42/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3917 - acc: 0.9885 - val_loss: 0.8968 - val_acc: 0.7936
-Epoch 43/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3931 - acc: 0.9874 - val_loss: 0.8318 - val_acc: 0.8169
-Epoch 44/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3897 - acc: 0.9893 - val_loss: 0.8811 - val_acc: 0.7988
-Epoch 45/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3876 - acc: 0.9888 - val_loss: 0.8453 - val_acc: 0.8094
-Epoch 46/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3876 - acc: 0.9889 - val_loss: 0.8195 - val_acc: 0.8179
-Epoch 47/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3891 - acc: 0.9890 - val_loss: 0.8373 - val_acc: 0.8137
-Epoch 48/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3902 - acc: 0.9888 - val_loss: 0.8457 - val_acc: 0.8120
-Epoch 49/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3864 - acc: 0.9903 - val_loss: 0.9012 - val_acc: 0.7907
-Epoch 50/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3859 - acc: 0.9903 - val_loss: 0.8291 - val_acc: 0.8053
-Epoch 51/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3830 - acc: 0.9915 - val_loss: 0.8494 - val_acc: 0.8139
-Epoch 52/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3828 - acc: 0.9907 - val_loss: 0.8447 - val_acc: 0.8135
-Epoch 53/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3823 - acc: 0.9910 - val_loss: 0.8539 - val_acc: 0.8120
-Epoch 54/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3832 - acc: 0.9905 - val_loss: 0.8592 - val_acc: 0.8098
-Epoch 55/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3823 - acc: 0.9908 - val_loss: 0.8585 - val_acc: 0.8087
-Epoch 56/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3817 - acc: 0.9911 - val_loss: 0.8840 - val_acc: 0.7889
-Epoch 57/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3827 - acc: 0.9914 - val_loss: 0.8205 - val_acc: 0.8250
-Epoch 58/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3818 - acc: 0.9912 - val_loss: 0.8571 - val_acc: 0.8051
-Epoch 59/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3811 - acc: 0.9919 - val_loss: 0.8155 - val_acc: 0.8254
-Epoch 60/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.3803 - acc: 0.9919 - val_loss: 0.8617 - val_acc: 0.8040
-Epoch 61/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3793 - acc: 0.9926 - val_loss: 0.8212 - val_acc: 0.8192
-Epoch 62/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3825 - acc: 0.9912 - val_loss: 0.8139 - val_acc: 0.8277
-Epoch 63/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3784 - acc: 0.9923 - val_loss: 0.8304 - val_acc: 0.8121
-Epoch 64/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3809 - acc: 0.9918 - val_loss: 0.7961 - val_acc: 0.8289
-Epoch 65/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3750 - acc: 0.9930 - val_loss: 0.8676 - val_acc: 0.8110
-Epoch 66/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3789 - acc: 0.9928 - val_loss: 0.8308 - val_acc: 0.8148
-Epoch 67/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3783 - acc: 0.9929 - val_loss: 0.8595 - val_acc: 0.8097
-Epoch 68/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3758 - acc: 0.9935 - val_loss: 0.8359 - val_acc: 0.8065
-Epoch 69/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3784 - acc: 0.9927 - val_loss: 0.8189 - val_acc: 0.8255
-Epoch 70/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3786 - acc: 0.9924 - val_loss: 0.8754 - val_acc: 0.8001
-Epoch 71/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3749 - acc: 0.9936 - val_loss: 0.8188 - val_acc: 0.8262
-Epoch 72/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3758 - acc: 0.9932 - val_loss: 0.8540 - val_acc: 0.8169
-Epoch 73/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3740 - acc: 0.9934 - val_loss: 0.8127 - val_acc: 0.8258
-Epoch 74/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3749 - acc: 0.9932 - val_loss: 0.8662 - val_acc: 0.8018
-Epoch 75/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3721 - acc: 0.9941 - val_loss: 0.8359 - val_acc: 0.8213
-Epoch 76/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3746 - acc: 0.9937 - val_loss: 0.8462 - val_acc: 0.8178
-Epoch 77/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3741 - acc: 0.9936 - val_loss: 0.8983 - val_acc: 0.7972
-Epoch 78/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3751 - acc: 0.9933 - val_loss: 0.8525 - val_acc: 0.8173
-Epoch 79/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3762 - acc: 0.9931 - val_loss: 0.8190 - val_acc: 0.8201
-Epoch 80/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3737 - acc: 0.9940 - val_loss: 0.8441 - val_acc: 0.8196
-Epoch 81/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3729 - acc: 0.9935 - val_loss: 0.8151 - val_acc: 0.8267
-Epoch 82/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3735 - acc: 0.9938 - val_loss: 0.8405 - val_acc: 0.8163
-Epoch 83/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3723 - acc: 0.9939 - val_loss: 0.8225 - val_acc: 0.8243
-Epoch 84/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3738 - acc: 0.9938 - val_loss: 0.8413 - val_acc: 0.8115
-Epoch 85/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3714 - acc: 0.9947 - val_loss: 0.9080 - val_acc: 0.7932
-Epoch 86/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3744 - acc: 0.9942 - val_loss: 0.8467 - val_acc: 0.8135
-Epoch 87/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3705 - acc: 0.9948 - val_loss: 0.8491 - val_acc: 0.8163
-Epoch 88/100
-50000/50000 [==============================] - 128s 3ms/step - loss: 0.3733 - acc: 0.9944 - val_loss: 0.8005 - val_acc: 0.8214
-Epoch 89/100
-50000/50000 [==============================] - 134s 3ms/step - loss: 0.3693 - acc: 0.9949 - val_loss: 0.7791 - val_acc: 0.8321
-Epoch 90/100
-50000/50000 [==============================] - 135s 3ms/step - loss: 0.3724 - acc: 0.9942 - val_loss: 0.8458 - val_acc: 0.8124
-Epoch 91/100
-50000/50000 [==============================] - 128s 3ms/step - loss: 0.3732 - acc: 0.9947 - val_loss: 0.8315 - val_acc: 0.8164
-Epoch 92/100
-50000/50000 [==============================] - 127s 3ms/step - loss: 0.3699 - acc: 0.9950 - val_loss: 0.8140 - val_acc: 0.8226
-Epoch 93/100
-50000/50000 [==============================] - 131s 3ms/step - loss: 0.3694 - acc: 0.9950 - val_loss: 0.8342 - val_acc: 0.8210
-Epoch 94/100
-50000/50000 [==============================] - 134s 3ms/step - loss: 0.3698 - acc: 0.9946 - val_loss: 0.8938 - val_acc: 0.8019
-Epoch 95/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3698 - acc: 0.9946 - val_loss: 0.8771 - val_acc: 0.8066
-Epoch 96/100
-50000/50000 [==============================] - 164s 3ms/step - loss: 0.3712 - acc: 0.9946 - val_loss: 0.8396 - val_acc: 0.8211
-Epoch 97/100
-50000/50000 [==============================] - 155s 3ms/step - loss: 0.3689 - acc: 0.9949 - val_loss: 0.8728 - val_acc: 0.8112
-Epoch 98/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3663 - acc: 0.9953 - val_loss: 0.9615 - val_acc: 0.7902
-Epoch 99/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3714 - acc: 0.9944 - val_loss: 0.8414 - val_acc: 0.8188
-Epoch 100/100
-50000/50000 [==============================] - 138s 3ms/step - loss: 0.3682 - acc: 0.9956 - val_loss: 0.8055 - val_acc: 0.8266
-</pre></div>
-
-
-<h2 id="model-output">Model Output<a class="headerlink" href="#model-output" title="Permanent link">&para;</a></h2>
-<p>We can now plot the final validation accuracy and loss:</p>
-<div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model accuracy&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]))</span>
-</pre></div>
-
-<div class="codehilite"><pre><span></span>0.9956000019311905
-0.8320999944210052
-</pre></div>
-
-
-<p><img alt="png" src="output_12_1.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]))</span>
-</pre></div>
-
-<div class="codehilite"><pre><span></span>0.3663262344896793
-0.7790719392895699
-</pre></div>
-
-
-<p><img alt="png" src="output_13_1.png" /></p>
                 
                   
                 
@@ -1052,7 +821,7 @@ Epoch 100/100
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../mnist/" title="Introduction to BNNs with Larq" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1061,19 +830,19 @@ Epoch 100/100
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Introduction to BNNs with Larq
+                Binarynet on CIFAR10
               </span>
             </div>
           </a>
         
         
-          <a href="../binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../api/layers/" title="Layers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Binarynet on CIFAR10 (Advanced)
+                Layers
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
