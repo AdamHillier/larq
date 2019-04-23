@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.1">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
     
     
       
@@ -233,8 +233,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="../layers/" title="Documentation" class="md-tabs__link md-tabs__link--active">
-          Documentation
+        <a href="../layers/" title="API" class="md-tabs__link md-tabs__link--active">
+          API
         </a>
       
     </li>
@@ -320,16 +320,28 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="../../guide/" title="User Guide" class="md-nav__link">
+      User Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
     
-    <label class="md-nav__link" for="nav-1-2">
-      Library Development
+    <label class="md-nav__link" for="nav-1-3">
+      Developer Guide
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-1-2">
-        Library Development
+      <label class="md-nav__title" for="nav-1-3">
+        Developer Guide
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -405,8 +417,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../examples/binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-nav__link">
-      Binarynet on CIFAR10
+    <a href="../../examples/binarynet_cifar10/" title="BinaryNet on CIFAR10" class="md-nav__link">
+      BinaryNet on CIFAR10
     </a>
   </li>
 
@@ -417,8 +429,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../examples/binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link">
-      Binarynet on CIFAR10 (Advanced)
+    <a href="../../examples/binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">
+      BinaryNet on CIFAR10 (Advanced)
     </a>
   </li>
 
@@ -440,11 +452,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
-      Documentation
+      API
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
-        Documentation
+        API
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -503,6 +515,13 @@
         <li class="md-nav__item">
   <a href="#approx_sign" title="approx_sign" class="md-nav__link">
     approx_sign
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#magnitude_aware_sign" title="magnitude_aware_sign" class="md-nav__link">
+    magnitude_aware_sign
   </a>
   
 </li>
@@ -617,6 +636,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#magnitude_aware_sign" title="magnitude_aware_sign" class="md-nav__link">
+    magnitude_aware_sign
+  </a>
+  
+</li>
+      
       
       
       
@@ -694,6 +720,23 @@ q(x) = \begin{cases}
 <li><a href="http://arxiv.org/abs/1808.00278">Bi-Real Net: Enhancing the Performance of 1-bit CNNs With Improved
   Representational Capability and Advanced
   Training Algorithm</a></li>
+</ul>
+<h2 id="magnitude_aware_sign">magnitude_aware_sign<a class="headerlink" href="#magnitude_aware_sign" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="n">magnitude_aware_sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+<p>Magnitude-aware sign for Bi-Real Net.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><code>x</code>: Input tensor</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>Scaled binarized tensor (with values in <span><span class="MathJax_Preview">\{-a, a\}</span><script type="math/tex">\{-a, a\}</script></span>, where <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is a float).</p>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://arxiv.org/abs/1808.00278">Bi-Real Net: Enhancing the Performance of 1-bit CNNs With Improved
+  Representational Capability and Advanced Training
+  Algorithm</a></li>
 </ul>
                 
                   
@@ -775,7 +818,7 @@ q(x) = \begin{cases}
       
     </div>
     
-      <script src="../../assets/javascripts/application.dc02f8ce.js"></script>
+      <script src="../../assets/javascripts/application.267712eb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       

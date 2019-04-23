@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.1">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.2">
     
     
       
@@ -233,8 +233,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="api/layers/" title="Documentation" class="md-tabs__link">
-          Documentation
+        <a href="api/layers/" title="API" class="md-tabs__link">
+          API
         </a>
       
     </li>
@@ -381,16 +381,28 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="guide/" title="User Guide" class="md-nav__link">
+      User Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
     
-    <label class="md-nav__link" for="nav-1-2">
-      Library Development
+    <label class="md-nav__link" for="nav-1-3">
+      Developer Guide
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-1-2">
-        Library Development
+      <label class="md-nav__title" for="nav-1-3">
+        Developer Guide
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -466,8 +478,8 @@
 
 
   <li class="md-nav__item">
-    <a href="examples/binarynet_cifar10/" title="Binarynet on CIFAR10" class="md-nav__link">
-      Binarynet on CIFAR10
+    <a href="examples/binarynet_cifar10/" title="BinaryNet on CIFAR10" class="md-nav__link">
+      BinaryNet on CIFAR10
     </a>
   </li>
 
@@ -478,8 +490,8 @@
 
 
   <li class="md-nav__item">
-    <a href="examples/binarynet_advanced_cifar10/" title="Binarynet on CIFAR10 (Advanced)" class="md-nav__link">
-      Binarynet on CIFAR10 (Advanced)
+    <a href="examples/binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">
+      BinaryNet on CIFAR10 (Advanced)
     </a>
   </li>
 
@@ -499,11 +511,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      Documentation
+      API
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
-        Documentation
+        API
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -668,14 +680,18 @@
 <p>Larq is an open-source deep learning library for training neural networks with extremely low precision weights and activations, such as Binarized Neural Networks (BNNs).</p>
 <p>Existing deep neural networks use 32 bits, 16 bits or 8 bits to encode each weight and activation, making them large, slow and power-hungry. This prohibits many applications in resource-constrained environments. Larq is the first step towards solving this. It is designed to provide an easy to use, composable way to train BNNs (1 bit) and other types of Quantized Neural Networks (QNNs) and is based on the <code>tf.keras</code> interface.</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>To build a QNN, Larq introduces the concept of <em>Quantized Layers</em> and <em>Quantizers</em>. A <em>Quantizer</em> defines the way of transforming a full precision input to a quantized output and the pseudo-gradient method used for the backwards pass. Each <em>Quantized Layer</em> requires a <code>kernel_quantizer</code> and an <code>input_quantizer</code> that describe the way of quantizing the weights of the layer and the activations of the previous layer respectively. If both <code>input_quantizer</code> and <code>kernel_quantizer</code> are <code>None</code> the layer is equivalent to a full precision layer.</p>
-<p>You can define a binarized densely-connected layer using the Straight-Through Estimator the following way:</p>
-<div class="codehilite"><pre><span></span><span class="n">larq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span>
-    <span class="mi">512</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="s2">&quot;weight_clip&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+<p>To build a QNN, Larq introduces the concept of <a href="https://plumerai.github.io/larq/api/layers/">quantized layers</a> and <a href="https://plumerai.github.io/larq/api/quantizers/">quantizers</a>. A quantizer defines the way of transforming a full precision input to a quantized output and the pseudo-gradient method used for the backwards pass. Each quantized layer requires a <code>kernel_quantizer</code> and an <code>input_quantizer</code> that describe the way of quantizing the weights of the layer and the activations of the previous layer respectively. If both <code>input_quantizer</code> and <code>kernel_quantizer</code> are <code>None</code> the layer is equivalent to a full precision layer.</p>
+<p>You can define a simple binarized fully-connected Keras model using the <a href="https://plumerai.github.io/larq/api/quantizers/#ste_sign">Straight-Through Estimator</a> the following way:</p>
+<div class="codehilite"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+    <span class="n">larq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span>
+                           <span class="n">kernel_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
+                           <span class="n">kernel_constraint</span><span class="o">=</span><span class="s2">&quot;weight_clip&quot;</span><span class="p">),</span>
+    <span class="n">larq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
+                           <span class="n">input_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
+                           <span class="n">kernel_quantizer</span><span class="o">=</span><span class="s2">&quot;ste_sign&quot;</span><span class="p">,</span>
+                           <span class="n">kernel_constraint</span><span class="o">=</span><span class="s2">&quot;weight_clip&quot;</span><span class="p">,</span>
+                           <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)])</span>
 </pre></div>
 
 <p>This layer can be used inside a <a href="https://www.tensorflow.org/alpha/guide/keras/overview#sequential_model">Keras model</a> or with a <a href="https://www.tensorflow.org/alpha/guide/keras/overview#model_subclassing">custom training loop</a>.</p>
@@ -718,13 +734,13 @@
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="contributing/" title="Contributing Guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="guide/" title="User Guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Contributing Guide
+                User Guide
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -763,7 +779,7 @@
       
     </div>
     
-      <script src="assets/javascripts/application.dc02f8ce.js"></script>
+      <script src="assets/javascripts/application.267712eb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
       
