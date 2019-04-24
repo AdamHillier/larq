@@ -668,7 +668,268 @@
 <p><div class="codehilite"><pre><span></span><span class="n">hard_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 Hard tanh activation function.
-\[\sigma(x) = \mathrm{Clip}(x, −1, 1)\]</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg width="562.04pt" height="201.77pt" version="1.1" viewBox="0 0 562.04 201.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="m0 201.77h562.04v-201.77h-562.04z" fill="#fff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="m42.152 169.8h235.39v-154.8h-235.39z" fill="#fff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m94ed3dc451" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
+      </defs>
+      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_1">
+      <text transform="rotate(-0 52.852 185.05)" x="52.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_2">
+      <text transform="rotate(-0 106.35 185.05)" x="106.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_3">
+      <text transform="rotate(-0 159.85 185.05)" x="159.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_4">
+      <text transform="rotate(-0 213.35 185.05)" x="213.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_5">
+      <text transform="rotate(-0 266.84 185.05)" x="266.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text transform="rotate(-0 159.85 199.53)" x="159.847344" y="199.534375" font-family="Roboto" font-size="11px" text-anchor="middle">x</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m3108c5f7a4" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
+      </defs>
+      <use x="42.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_7">
+      <text transform="rotate(-0 35.152 166.89)" x="35.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">−1.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <use x="42.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_8">
+      <text transform="rotate(-0 35.152 131.71)" x="35.152344" y="131.706818" font-family="Roboto" font-size="11px" text-anchor="end">−0.5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_9">
+      <text transform="rotate(-0 35.152 96.525)" x="35.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <use x="42.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_10">
+      <text transform="rotate(-0 35.152 61.343)" x="35.152344" y="61.343182" font-family="Roboto" font-size="11px" text-anchor="end">0.5</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <use x="42.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_11">
+      <text transform="rotate(-0 35.152 26.161)" x="35.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text transform="rotate(-90 8.1366 92.4)" x="8.136563" y="92.4" font-family="Roboto" font-size="11px" text-anchor="middle">y</text>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <path d="m52.852 162.76h53.176l0.42884-0.14101 106.78-140.45 0.42884-0.14101h53.176v0" clip-path="url(#p2b3003a8f7)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+   </g>
+   <g id="patch_3">
+    <path d="m42.152 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_4">
+    <path d="m277.54 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_5">
+    <path d="m42.152 169.8h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_6">
+    <path d="m42.152 15h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="text_13">
+    <text transform="rotate(-0 159.85 9)" x="159.847344" y="9" font-family="Roboto" font-size="12px" text-anchor="middle">Forward pass</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="m323.15 169.8h235.39v-154.8h-235.39z" fill="#fff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_12">
+      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_14">
+      <text transform="rotate(-0 333.85 185.05)" x="333.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_15">
+      <text transform="rotate(-0 387.35 185.05)" x="387.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_14">
+      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_16">
+      <text transform="rotate(-0 440.85 185.05)" x="440.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_15">
+      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_17">
+      <text transform="rotate(-0 494.35 185.05)" x="494.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_16">
+      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m94ed3dc451"/>
+     </g>
+     <g id="text_18">
+      <text transform="rotate(-0 547.84 185.05)" x="547.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
+     </g>
+    </g>
+    <g id="text_19">
+     <text transform="rotate(-0 440.85 199.53)" x="440.847344" y="199.534375" font-family="Roboto" font-size="11px" text-anchor="middle">x</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_6">
+     <g id="line2d_17">
+      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_20">
+      <text transform="rotate(-0 316.15 166.89)" x="316.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_18">
+      <use x="323.152344" y="134.618182" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_21">
+      <text transform="rotate(-0 316.15 138.74)" x="316.152344" y="138.743182" font-family="Roboto" font-size="11px" text-anchor="end">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_19">
+      <use x="323.152344" y="106.472727" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_22">
+      <text transform="rotate(-0 316.15 110.6)" x="316.152344" y="110.597727" font-family="Roboto" font-size="11px" text-anchor="end">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_20">
+      <use x="323.152344" y="78.327273" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_23">
+      <text transform="rotate(-0 316.15 82.452)" x="316.152344" y="82.452273" font-family="Roboto" font-size="11px" text-anchor="end">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_21">
+      <use x="323.152344" y="50.181818" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_24">
+      <text transform="rotate(-0 316.15 54.307)" x="316.152344" y="54.306818" font-family="Roboto" font-size="11px" text-anchor="end">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_22">
+      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m3108c5f7a4"/>
+     </g>
+     <g id="text_25">
+      <text transform="rotate(-0 316.15 26.161)" x="316.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
+     </g>
+    </g>
+    <g id="text_26">
+     <text transform="rotate(-90 295.4 92.4)" x="295.404844" y="92.4" font-family="Roboto" font-size="11px" text-anchor="middle">dy / dx</text>
+    </g>
+   </g>
+   <g id="line2d_23">
+    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#p8c78dadcd9)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+   </g>
+   <g id="patch_8">
+    <path d="m323.15 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_9">
+    <path d="m558.54 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_10">
+    <path d="m323.15 169.8h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_11">
+    <path d="m323.15 15h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="text_27">
+    <text transform="rotate(-0 440.85 9)" x="440.847344" y="9" font-family="Roboto" font-size="12px" text-anchor="middle">Backward pass</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2b3003a8f7">
+   <rect x="42.152" y="15" width="235.39" height="154.8"/>
+  </clipPath>
+  <clipPath id="p8c78dadcd9">
+   <rect x="323.15" y="15" width="235.39" height="154.8"/>
+  </clipPath>
+ </defs>
+</svg>
+</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><code>x</code>: Input tensor.</li>
@@ -680,6 +941,261 @@ Hard tanh activation function.
 </pre></div>
 Leaky tanh activation function.
 Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg width="562.04pt" height="201.77pt" version="1.1" viewBox="0 0 562.04 201.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="m0 201.77h562.04v-201.77h-562.04z" fill="#fff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="m42.152 169.8h235.39v-154.8h-235.39z" fill="#fff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me518445ae0" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
+      </defs>
+      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_1">
+      <text transform="rotate(-0 52.852 185.05)" x="52.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_2">
+      <text transform="rotate(-0 106.35 185.05)" x="106.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_3">
+      <text transform="rotate(-0 159.85 185.05)" x="159.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_4">
+      <text transform="rotate(-0 213.35 185.05)" x="213.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_5">
+      <text transform="rotate(-0 266.84 185.05)" x="266.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text transform="rotate(-0 159.85 199.53)" x="159.847344" y="199.534375" font-family="Roboto" font-size="11px" text-anchor="middle">x</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path id="m83c3d3d310" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
+      </defs>
+      <use x="42.152344" y="151.036364" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_7">
+      <text transform="rotate(-0 35.152 155.16)" x="35.152344" y="155.161364" font-family="Roboto" font-size="11px" text-anchor="end">−1.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <use x="42.152344" y="121.718182" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_8">
+      <text transform="rotate(-0 35.152 125.84)" x="35.152344" y="125.843182" font-family="Roboto" font-size="11px" text-anchor="end">−0.5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_9">
+      <text transform="rotate(-0 35.152 96.525)" x="35.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <use x="42.152344" y="63.081818" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_10">
+      <text transform="rotate(-0 35.152 67.207)" x="35.152344" y="67.206818" font-family="Roboto" font-size="11px" text-anchor="end">0.5</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <use x="42.152344" y="33.763636" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_11">
+      <text transform="rotate(-0 35.152 37.889)" x="35.152344" y="37.888636" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text transform="rotate(-90 8.1366 92.4)" x="8.136563" y="92.4" font-family="Roboto" font-size="11px" text-anchor="middle">y</text>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <path d="m52.852 162.76 53.605-11.845 106.78-117.04 0.85768-0.28202 52.747-11.563v0" clip-path="url(#p65b3d2a764)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+   </g>
+   <g id="patch_3">
+    <path d="m42.152 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_4">
+    <path d="m277.54 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_5">
+    <path d="m42.152 169.8h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_6">
+    <path d="m42.152 15h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="text_13">
+    <text transform="rotate(-0 159.85 9)" x="159.847344" y="9" font-family="Roboto" font-size="12px" text-anchor="middle">Forward pass</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="m323.15 169.8h235.39v-154.8h-235.39z" fill="#fff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_12">
+      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_14">
+      <text transform="rotate(-0 333.85 185.05)" x="333.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_15">
+      <text transform="rotate(-0 387.35 185.05)" x="387.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_14">
+      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_16">
+      <text transform="rotate(-0 440.85 185.05)" x="440.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_15">
+      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_17">
+      <text transform="rotate(-0 494.35 185.05)" x="494.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_16">
+      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#me518445ae0"/>
+     </g>
+     <g id="text_18">
+      <text transform="rotate(-0 547.84 185.05)" x="547.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
+     </g>
+    </g>
+    <g id="text_19">
+     <text transform="rotate(-0 440.85 199.53)" x="440.847344" y="199.534375" font-family="Roboto" font-size="11px" text-anchor="middle">x</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_6">
+     <g id="line2d_17">
+      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_20">
+      <text transform="rotate(-0 316.15 166.89)" x="316.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_18">
+      <use x="323.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_21">
+      <text transform="rotate(-0 316.15 131.71)" x="316.152344" y="131.706818" font-family="Roboto" font-size="11px" text-anchor="end">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_19">
+      <use x="323.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_22">
+      <text transform="rotate(-0 316.15 96.525)" x="316.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_20">
+      <use x="323.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_23">
+      <text transform="rotate(-0 316.15 61.343)" x="316.152344" y="61.343182" font-family="Roboto" font-size="11px" text-anchor="end">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_21">
+      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m83c3d3d310"/>
+     </g>
+     <g id="text_24">
+      <text transform="rotate(-0 316.15 26.161)" x="316.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
+     </g>
+    </g>
+    <g id="text_25">
+     <text transform="rotate(-90 295.4 92.4)" x="295.404844" y="92.4" font-family="Roboto" font-size="11px" text-anchor="middle">dy / dx</text>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#paefa99299a)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+   </g>
+   <g id="patch_8">
+    <path d="m323.15 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_9">
+    <path d="m558.54 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_10">
+    <path d="m323.15 169.8h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="patch_11">
+    <path d="m323.15 15h235.39" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
+   </g>
+   <g id="text_26">
+    <text transform="rotate(-0 440.85 9)" x="440.847344" y="9" font-family="Roboto" font-size="12px" text-anchor="middle">Backward pass</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p65b3d2a764">
+   <rect x="42.152" y="15" width="235.39" height="154.8"/>
+  </clipPath>
+  <clipPath id="paefa99299a">
+   <rect x="323.15" y="15" width="235.39" height="154.8"/>
+  </clipPath>
+ </defs>
+</svg>
+
+
 <p><strong>Arguments</strong></p>
 <ul>
 <li><code>x</code>: Input tensor.</li>
