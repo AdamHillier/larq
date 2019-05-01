@@ -765,20 +765,19 @@ respectively.</p>
 <p>If both <code>input_quantizer</code> and <code>kernel_quantizer</code> are <code>None</code> the layer
 is equivalent to a full precision layer.</p>
 <h2 id="quantdense">QuantDense<a class="headerlink" href="#quantdense" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantDense</span><span class="p">(</span>
-    <span class="n">units</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantDense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span>
+           <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+           <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+           <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+           <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Just your regular densely-connected quantized NN layer.</p>
 <p><code>QuantDense</code> implements the operation:
@@ -846,25 +845,24 @@ would be a 2D input with shape <code>(batch_size, input_dim)</code>.</p>
 <p>N-D tensor with shape: <code>(batch_size, ..., units)</code>. For instance, for a 2D input with
 shape <code>(batch_size, input_dim)</code>, the output would have shape <code>(batch_size, units)</code>.</p>
 <h2 id="quantconv1d">QuantConv1D<a class="headerlink" href="#quantconv1d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantConv1D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="s1">&#39;channels_last&#39;</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantConv1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+            <span class="n">kernel_size</span><span class="p">,</span>
+            <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+            <span class="n">data_format</span><span class="o">=</span><span class="s1">&#39;channels_last&#39;</span><span class="p">,</span>
+            <span class="n">dilation_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+            <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+            <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 1D quantized convolution layer (e.g. temporal convolution).</p>
 <p>This layer creates a convolution kernel that is convolved with the layer input
@@ -916,25 +914,24 @@ sequences of 128-dimensional vectors.</p>
 <p>3D tensor with shape: <code>(batch_size, new_steps, filters)</code>.
 <code>steps</code> value might have changed due to padding or strides.</p>
 <h2 id="quantconv2d">QuantConv2D<a class="headerlink" href="#quantconv2d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantConv2D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantConv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+            <span class="n">kernel_size</span><span class="p">,</span>
+            <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+            <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+            <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+            <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 2D quantized convolution layer (e.g. spatial convolution over images).</p>
 <p>This layer creates a convolution kernel that is convolved
@@ -996,25 +993,24 @@ or 4D tensor with shape:
 <code>(samples, new_rows, new_cols, filters)</code> if data_format='channels_last'.
 <code>rows</code> and <code>cols</code> values might have changed due to padding.</p>
 <h2 id="quantconv3d">QuantConv3D<a class="headerlink" href="#quantconv3d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantConv3D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantConv3D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+            <span class="n">kernel_size</span><span class="p">,</span>
+            <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+            <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+            <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+            <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 3D convolution layer (e.g. spatial convolution over volumes).</p>
 <p>This layer creates a convolution kernel that is convolved
@@ -1082,30 +1078,29 @@ or 5D tensor with shape:
 <code>new_conv_dim1</code>, <code>new_conv_dim2</code> and <code>new_conv_dim3</code> values might have
     changed due to padding.</p>
 <h2 id="quantseparableconv1d">QuantSeparableConv1D<a class="headerlink" href="#quantseparableconv1d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv1D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">depth_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">pointwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">depthwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                     <span class="n">kernel_size</span><span class="p">,</span>
+                     <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                     <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">dilation_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">depth_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                     <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">pointwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                     <span class="n">depthwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Depthwise separable 1D quantized convolution.</p>
 <p>This layer performs a depthwise convolution that acts separately on channels,
@@ -1162,30 +1157,29 @@ It then optionally applies an activation function to produce the final output.</
 <li><code>name</code>: A string, the name of the layer.</li>
 </ul>
 <h2 id="quantseparableconv2d">QuantSeparableConv2D<a class="headerlink" href="#quantseparableconv2d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv2D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">depth_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">pointwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">depthwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">depthwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">pointwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                     <span class="n">kernel_size</span><span class="p">,</span>
+                     <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                     <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">depth_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                     <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">pointwise_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                     <span class="n">depthwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">depthwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">pointwise_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Depthwise separable 2D convolution.</p>
 <p>Separable convolutions consist in first performing a depthwise spatial convolution
@@ -1255,26 +1249,25 @@ or 4D tensor with shape:
 <code>(batch, new_rows, new_cols, filters)</code> if data_format='channels_last'.
 <code>rows</code> and <code>cols</code> values might have changed due to padding.</p>
 <h2 id="quantconv2dtranspose">QuantConv2DTranspose<a class="headerlink" href="#quantconv2dtranspose" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantConv2DTranspose</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">output_padding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantConv2DTranspose</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                     <span class="n">kernel_size</span><span class="p">,</span>
+                     <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                     <span class="n">output_padding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">dilation_rate</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                     <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                     <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Transposed quantized convolution layer (sometimes called Deconvolution).</p>
 <p>The need for transposed convolutions generally arises from the desire to use a
@@ -1349,25 +1342,24 @@ or 4D tensor with shape:
   Networks</a></li>
 </ul>
 <h2 id="quantconv3dtranspose">QuantConv3DTranspose<a class="headerlink" href="#quantconv3dtranspose" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantConv3DTranspose</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">output_padding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantConv3DTranspose</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                     <span class="n">kernel_size</span><span class="p">,</span>
+                     <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                     <span class="n">output_padding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                     <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                     <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                     <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Transposed quantized convolution layer (sometimes called Deconvolution).</p>
 <p>The need for transposed convolutions generally arises
@@ -1442,25 +1434,24 @@ or 5D tensor with shape:
   Networks</a></li>
 </ul>
 <h2 id="quantlocallyconnected1d">QuantLocallyConnected1D<a class="headerlink" href="#quantlocallyconnected1d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected1D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">implementation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                        <span class="n">kernel_size</span><span class="p">,</span>
+                        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                        <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                        <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                        <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">implementation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Locally-connected quantized layer for 1D inputs.</p>
 <p>The <code>QuantLocallyConnected1D</code> layer works similarly to the <code>QuantConv1D</code> layer,
@@ -1540,25 +1531,24 @@ the most efficient one (in terms of speed and memory usage).</p>
 <p>3D tensor with shape: <code>(batch_size, new_steps, filters)</code>
 <code>steps</code> value might have changed due to padding or strides.</p>
 <h2 id="quantlocallyconnected2d">QuantLocallyConnected2D<a class="headerlink" href="#quantlocallyconnected2d" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected2D</span><span class="p">(</span>
-    <span class="n">filters</span><span class="p">,</span>
-    <span class="n">kernel_size</span><span class="p">,</span>
-    <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
-    <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
-    <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
-    <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-    <span class="n">implementation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
+                        <span class="n">kernel_size</span><span class="p">,</span>
+                        <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span>
+                        <span class="n">data_format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">input_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_quantizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span>
+                        <span class="n">bias_initializer</span><span class="o">=</span><span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
+                        <span class="n">kernel_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">bias_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">activity_regularizer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">kernel_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">bias_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">implementation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 Locally-connected quantized layer for 2D inputs.</p>
 <p>The <code>QuantLocallyConnected2D</code> layer works similarly to the <code>QuantConv2D</code> layer,
