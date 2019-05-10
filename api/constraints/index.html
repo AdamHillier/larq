@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
+      <link rel="stylesheet" href="../../custom.css">
+    
     
       
     
@@ -663,7 +665,7 @@ unified API.</p>
 <span class="n">lq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_constraint</span><span class="o">=</span><span class="n">lq</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">WeightClip</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
 </pre></div>
 
-<h2 id="weightclip">WeightClip<a class="headerlink" href="#weightclip" title="Permanent link">&para;</a></h2>
+<h2 id="weightclip">WeightClip<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/constraints.py#L26" title="Source Code"></a><a class="headerlink" href="#weightclip" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">WeightClip</span><span class="p">(</span><span class="n">clip_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 Weight Clip constraint</p>
@@ -673,7 +675,7 @@ to be between <code>[-clip_value, clip_value]</code>.</p>
 <ul>
 <li><code>clip_value</code>: The value to clip incoming weights.</li>
 </ul>
-<h2 id="weight_clip">weight_clip<a class="headerlink" href="#weight_clip" title="Permanent link">&para;</a></h2>
+<h2 id="weight_clip">weight_clip<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/constraints.py#L48" title="Source Code"></a><a class="headerlink" href="#weight_clip" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="n">weight_clip</span><span class="p">(</span><span class="n">clip_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
                 

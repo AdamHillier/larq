@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
+      <link rel="stylesheet" href="../../custom.css">
+    
     
       
     
@@ -764,7 +766,7 @@ describes the way of quantizing the activation of the previous layer and the wei
 respectively.</p>
 <p>If both <code>input_quantizer</code> and <code>kernel_quantizer</code> are <code>None</code> the layer
 is equivalent to a full precision layer.</p>
-<h2 id="quantdense">QuantDense<a class="headerlink" href="#quantdense" title="Permanent link">&para;</a></h2>
+<h2 id="quantdense">QuantDense<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L146" title="Source Code"></a><a class="headerlink" href="#quantdense" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantDense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span>
            <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
            <span class="n">use_bias</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
@@ -844,7 +846,7 @@ would be a 2D input with shape <code>(batch_size, input_dim)</code>.</p>
 <p><strong>Output shape</strong></p>
 <p>N-D tensor with shape: <code>(batch_size, ..., units)</code>. For instance, for a 2D input with
 shape <code>(batch_size, input_dim)</code>, the output would have shape <code>(batch_size, units)</code>.</p>
-<h2 id="quantconv1d">QuantConv1D<a class="headerlink" href="#quantconv1d" title="Permanent link">&para;</a></h2>
+<h2 id="quantconv1d">QuantConv1D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L249" title="Source Code"></a><a class="headerlink" href="#quantconv1d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantConv1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
             <span class="n">kernel_size</span><span class="p">,</span>
             <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -913,7 +915,7 @@ sequences of 128-dimensional vectors.</p>
 <p><strong>Output shape</strong></p>
 <p>3D tensor with shape: <code>(batch_size, new_steps, filters)</code>.
 <code>steps</code> value might have changed due to padding or strides.</p>
-<h2 id="quantconv2d">QuantConv2D<a class="headerlink" href="#quantconv2d" title="Permanent link">&para;</a></h2>
+<h2 id="quantconv2d">QuantConv2D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L348" title="Source Code"></a><a class="headerlink" href="#quantconv2d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantConv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
             <span class="n">kernel_size</span><span class="p">,</span>
             <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -992,7 +994,7 @@ or 4D tensor with shape:
 or 4D tensor with shape:
 <code>(samples, new_rows, new_cols, filters)</code> if data_format='channels_last'.
 <code>rows</code> and <code>cols</code> values might have changed due to padding.</p>
-<h2 id="quantconv3d">QuantConv3D<a class="headerlink" href="#quantconv3d" title="Permanent link">&para;</a></h2>
+<h2 id="quantconv3d">QuantConv3D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L457" title="Source Code"></a><a class="headerlink" href="#quantconv3d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantConv3D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
             <span class="n">kernel_size</span><span class="p">,</span>
             <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -1077,7 +1079,7 @@ or 5D tensor with shape:
     data_format='channels_last'.
 <code>new_conv_dim1</code>, <code>new_conv_dim2</code> and <code>new_conv_dim3</code> values might have
     changed due to padding.</p>
-<h2 id="quantseparableconv1d">QuantSeparableConv1D<a class="headerlink" href="#quantseparableconv1d" title="Permanent link">&para;</a></h2>
+<h2 id="quantseparableconv1d">QuantSeparableConv1D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L572" title="Source Code"></a><a class="headerlink" href="#quantseparableconv1d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                      <span class="n">kernel_size</span><span class="p">,</span>
                      <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1156,7 +1158,7 @@ It then optionally applies an activation function to produce the final output.</
     trainable (and listed in <code>layer.trainable_weights</code>).</li>
 <li><code>name</code>: A string, the name of the layer.</li>
 </ul>
-<h2 id="quantseparableconv2d">QuantSeparableConv2D<a class="headerlink" href="#quantseparableconv2d" title="Permanent link">&para;</a></h2>
+<h2 id="quantseparableconv2d">QuantSeparableConv2D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L683" title="Source Code"></a><a class="headerlink" href="#quantseparableconv2d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantSeparableConv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                      <span class="n">kernel_size</span><span class="p">,</span>
                      <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -1248,7 +1250,7 @@ or 4D tensor with shape:
 or 4D tensor with shape:
 <code>(batch, new_rows, new_cols, filters)</code> if data_format='channels_last'.
 <code>rows</code> and <code>cols</code> values might have changed due to padding.</p>
-<h2 id="quantconv2dtranspose">QuantConv2DTranspose<a class="headerlink" href="#quantconv2dtranspose" title="Permanent link">&para;</a></h2>
+<h2 id="quantconv2dtranspose">QuantConv2DTranspose<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L810" title="Source Code"></a><a class="headerlink" href="#quantconv2dtranspose" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantConv2DTranspose</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                      <span class="n">kernel_size</span><span class="p">,</span>
                      <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -1341,7 +1343,7 @@ or 4D tensor with shape:
 <li><a href="https://www.matthewzeiler.com/mattzeiler/deconvolutionalnetworks.pdf">Deconvolutional
   Networks</a></li>
 </ul>
-<h2 id="quantconv3dtranspose">QuantConv3DTranspose<a class="headerlink" href="#quantconv3dtranspose" title="Permanent link">&para;</a></h2>
+<h2 id="quantconv3dtranspose">QuantConv3DTranspose<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L932" title="Source Code"></a><a class="headerlink" href="#quantconv3dtranspose" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantConv3DTranspose</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                      <span class="n">kernel_size</span><span class="p">,</span>
                      <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -1433,7 +1435,7 @@ or 5D tensor with shape:
 <li><a href="https://www.matthewzeiler.com/mattzeiler/deconvolutionalnetworks.pdf">Deconvolutional
   Networks</a></li>
 </ul>
-<h2 id="quantlocallyconnected1d">QuantLocallyConnected1D<a class="headerlink" href="#quantlocallyconnected1d" title="Permanent link">&para;</a></h2>
+<h2 id="quantlocallyconnected1d">QuantLocallyConnected1D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L1052" title="Source Code"></a><a class="headerlink" href="#quantlocallyconnected1d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected1D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                         <span class="n">kernel_size</span><span class="p">,</span>
                         <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1530,7 +1532,7 @@ the most efficient one (in terms of speed and memory usage).</p>
 <p><strong>Output shape</strong></p>
 <p>3D tensor with shape: <code>(batch_size, new_steps, filters)</code>
 <code>steps</code> value might have changed due to padding or strides.</p>
-<h2 id="quantlocallyconnected2d">QuantLocallyConnected2D<a class="headerlink" href="#quantlocallyconnected2d" title="Permanent link">&para;</a></h2>
+<h2 id="quantlocallyconnected2d">QuantLocallyConnected2D<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/layers.py#L1178" title="Source Code"></a><a class="headerlink" href="#quantlocallyconnected2d" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">QuantLocallyConnected2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span>
                         <span class="n">kernel_size</span><span class="p">,</span>
                         <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
