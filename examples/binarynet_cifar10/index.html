@@ -1,682 +1,4 @@
-
-
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-        <meta name="description" content="An Open Source Machine Learning Framework for Training Extreme Quantized Neural Networks">
-      
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
-    
-    
-      
-        <title>BinaryNet on CIFAR10 - Larq</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
-      
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="#2196f3">
-      
-    
-    
-      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../../custom.css">
-    
-    
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="__github">
-  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
-        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
-        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
-        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
-        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
-        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
-        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
-        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
-        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
-        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
-        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
-        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
-        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
-        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
-        99.5z" />
-</svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#binarynet-on-cifar10" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Larq" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">developer_board</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Larq
-            </span>
-            <span class="md-header-nav__topic">
-              BinaryNet on CIFAR10
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            Type to start searching
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-<a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
-    plumerai/larq
-  </div>
-</a>
-          </div>
-        </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-        
-
-  
-
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../.." title="Home" class="md-tabs__link">
-          Home
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../mnist/" title="Examples" class="md-tabs__link md-tabs__link--active">
-          Examples
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../api/layers/" title="API" class="md-tabs__link">
-          API
-        </a>
-      
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Larq" class="md-nav__button md-logo">
-      
-        <i class="md-icon">developer_board</i>
-      
-    </a>
-    Larq
-  </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-<a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
-    plumerai/larq
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
-    
-    <label class="md-nav__link" for="nav-1">
-      Home
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-1">
-        Home
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="Getting Started" class="md-nav__link">
-      Getting Started
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../guide/" title="User Guide" class="md-nav__link">
-      User Guide
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
-    
-    <label class="md-nav__link" for="nav-1-3">
-      Developer Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-1-3">
-        Developer Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../contributing/" title="Contributing Guide" class="md-nav__link">
-      Contributing Guide
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../code_of_conduct/" title="Code of Conduct" class="md-nav__link">
-      Code of Conduct
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
-    
-    <label class="md-nav__link" for="nav-2">
-      Examples
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Examples
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">
-      Introduction to BNNs with Larq
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        BinaryNet on CIFAR10
-      </label>
-    
-    <a href="./" title="BinaryNet on CIFAR10" class="md-nav__link md-nav__link--active">
-      BinaryNet on CIFAR10
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#import-cifar10-dataset" title="Import CIFAR10 Dataset" class="md-nav__link">
-    Import CIFAR10 Dataset
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">
-    Build BinaryNet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-training" title="Model Training" class="md-nav__link">
-    Model Training
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-output" title="Model Output" class="md-nav__link">
-    Model Output
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">
-      BinaryNet on CIFAR10 (Advanced)
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      API
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        API
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/layers/" title="Layers" class="md-nav__link">
-      Layers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/quantizers/" title="Quantizers" class="md-nav__link">
-      Quantizers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/activations/" title="Activations" class="md-nav__link">
-      Activations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/constraints/" title="Constraints" class="md-nav__link">
-      Constraints
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/callbacks/" title="Callbacks" class="md-nav__link">
-      Callbacks
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/optimizers/" title="Optimizers" class="md-nav__link">
-      Optimizers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/models/" title="Models" class="md-nav__link">
-      Models
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#import-cifar10-dataset" title="Import CIFAR10 Dataset" class="md-nav__link">
-    Import CIFAR10 Dataset
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">
-    Build BinaryNet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-training" title="Model Training" class="md-nav__link">
-    Model Training
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-output" title="Model Output" class="md-nav__link">
-    Model Output
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                
-                <h1 id="binarynet-on-cifar10">BinaryNet on CIFAR10<a class="headerlink" href="#binarynet-on-cifar10" title="Permanent link">&para;</a></h1>
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="An Open Source Machine Learning Framework for Training Extreme Quantized Neural Networks"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.0"><title>BinaryNet on CIFAR10 - Larq</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#2196f3"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../custom.css"></head><body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#binarynet-on-cifar10" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="../.." title="Larq" class="md-header-nav__button md-logo"><i class="md-icon">developer_board</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Larq</span><span class="md-header-nav__topic">BinaryNet on CIFAR10</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">Type to start searching</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href="../.." title="Home" class="md-tabs__link">Home</a></li><li class="md-tabs__item"><a href="../mnist/" title="Examples" class="md-tabs__link md-tabs__link--active">Examples</a></li><li class="md-tabs__item"><a href="../../api/layers/" title="API" class="md-tabs__link">API</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="../.." title="Larq" class="md-nav__button md-logo"><i class="md-icon">developer_board</i></a>Larq</label><div class="md-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1"><label class="md-nav__link" for="nav-1">Home</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-1">Home</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Getting Started" class="md-nav__link">Getting Started</a></li><li class="md-nav__item"><a href="../../guide/" title="User Guide" class="md-nav__link">User Guide</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3"><label class="md-nav__link" for="nav-1-3">Developer Guide</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-1-3">Developer Guide</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../contributing/" title="Contributing Guide" class="md-nav__link">Contributing Guide</a></li><li class="md-nav__item"><a href="../../code_of_conduct/" title="Code of Conduct" class="md-nav__link">Code of Conduct</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked><label class="md-nav__link" for="nav-2">Examples</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Examples</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">Introduction to BNNs with Larq</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">BinaryNet on CIFAR10</label><a href="./" title="BinaryNet on CIFAR10" class="md-nav__link md-nav__link--active">BinaryNet on CIFAR10</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#import-cifar10-dataset" title="Import CIFAR10 Dataset" class="md-nav__link">Import CIFAR10 Dataset</a></li><li class="md-nav__item"><a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">Build BinaryNet</a></li><li class="md-nav__item"><a href="#model-training" title="Model Training" class="md-nav__link">Model Training</a></li><li class="md-nav__item"><a href="#model-output" title="Model Output" class="md-nav__link">Model Output</a></li></ul></nav></li><li class="md-nav__item"><a href="../binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">BinaryNet on CIFAR10 (Advanced)</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">API</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">API</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../api/layers/" title="Layers" class="md-nav__link">Layers</a></li><li class="md-nav__item"><a href="../../api/quantizers/" title="Quantizers" class="md-nav__link">Quantizers</a></li><li class="md-nav__item"><a href="../../api/activations/" title="Activations" class="md-nav__link">Activations</a></li><li class="md-nav__item"><a href="../../api/constraints/" title="Constraints" class="md-nav__link">Constraints</a></li><li class="md-nav__item"><a href="../../api/callbacks/" title="Callbacks" class="md-nav__link">Callbacks</a></li><li class="md-nav__item"><a href="../../api/optimizers/" title="Optimizers" class="md-nav__link">Optimizers</a></li><li class="md-nav__item"><a href="../../api/models/" title="Models" class="md-nav__link">Models</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#import-cifar10-dataset" title="Import CIFAR10 Dataset" class="md-nav__link">Import CIFAR10 Dataset</a></li><li class="md-nav__item"><a href="#build-binarynet" title="Build BinaryNet" class="md-nav__link">Build BinaryNet</a></li><li class="md-nav__item"><a href="#model-training" title="Model Training" class="md-nav__link">Model Training</a></li><li class="md-nav__item"><a href="#model-output" title="Model Output" class="md-nav__link">Model Output</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="binarynet-on-cifar10">BinaryNet on CIFAR10<a class="headerlink" href="#binarynet-on-cifar10" title="Permanent link">&para;</a></h1>
 <p><strong>Run this notebook here: <a href="https://mybinder.org/v2/gh/plumerai/larq/master?filepath=examples%2Fbinarynet_cifar10.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></strong></p>
 <p>In this example we demonstrate how to use Larq to build and train BinaryNet on the CIFAR10 dataset to achieve a validation accuracy approximately 83% on laptop hardware.
 On a Nvidia GTX 1050 Ti Max-Q it takes approximately 200 minutes to train. For simplicity, compared to the original papers <a href="https://arxiv.org/abs/1511.00363">BinaryConnect: Training Deep Neural Networks with binary weights during propagations</a>, and <a href="http://arxiv.org/abs/1602.02830">Binarized Neural Networks: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1</a>, we do not impliment learning rate scaling, or image whitening.</p>
@@ -806,207 +128,207 @@ Non-trainable params: 7700
 <span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>Train on 50000 samples, validate on 10000 samples
-Epoch 1/100
-50000/50000 [==============================] - 131s 3ms/step - loss: 1.5733 - acc: 0.4533 - val_loss: 1.6368 - val_acc: 0.4244
-Epoch 2/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 1.1485 - acc: 0.6387 - val_loss: 1.8497 - val_acc: 0.3764
-Epoch 3/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.9641 - acc: 0.7207 - val_loss: 1.5696 - val_acc: 0.4794
-Epoch 4/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.8452 - acc: 0.7728 - val_loss: 1.5765 - val_acc: 0.4669
-Epoch 5/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.7553 - acc: 0.8114 - val_loss: 1.0653 - val_acc: 0.6928
-Epoch 6/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.6841 - acc: 0.8447 - val_loss: 1.0944 - val_acc: 0.6880
-Epoch 7/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.6356 - acc: 0.8685 - val_loss: 0.9909 - val_acc: 0.7317
-Epoch 8/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.5907 - acc: 0.8910 - val_loss: 0.9453 - val_acc: 0.7446
-Epoch 9/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.5610 - acc: 0.9043 - val_loss: 0.9441 - val_acc: 0.7460
-Epoch 10/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.5295 - acc: 0.9201 - val_loss: 0.8892 - val_acc: 0.7679
-Epoch 11/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.5100 - acc: 0.9309 - val_loss: 0.8808 - val_acc: 0.7818
-Epoch 12/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4926 - acc: 0.9397 - val_loss: 0.8404 - val_acc: 0.7894
-Epoch 13/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4807 - acc: 0.9470 - val_loss: 0.8600 - val_acc: 0.7928
-Epoch 14/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4661 - acc: 0.9529 - val_loss: 0.9046 - val_acc: 0.7732
-Epoch 15/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.4588 - acc: 0.9571 - val_loss: 0.8505 - val_acc: 0.7965
-Epoch 16/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4558 - acc: 0.9593 - val_loss: 0.8748 - val_acc: 0.7859
-Epoch 17/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4434 - acc: 0.9649 - val_loss: 0.9109 - val_acc: 0.7656
-Epoch 18/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4449 - acc: 0.9643 - val_loss: 0.8532 - val_acc: 0.7971
-Epoch 19/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4349 - acc: 0.9701 - val_loss: 0.8677 - val_acc: 0.7951
-Epoch 20/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4351 - acc: 0.9698 - val_loss: 0.9145 - val_acc: 0.7740
-Epoch 21/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4268 - acc: 0.9740 - val_loss: 0.8308 - val_acc: 0.8065
-Epoch 22/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4243 - acc: 0.9741 - val_loss: 0.8229 - val_acc: 0.8075
-Epoch 23/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4201 - acc: 0.9764 - val_loss: 0.8411 - val_acc: 0.8062
-Epoch 24/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4190 - acc: 0.9769 - val_loss: 0.8649 - val_acc: 0.7951
-Epoch 25/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4139 - acc: 0.9787 - val_loss: 0.8257 - val_acc: 0.8071
-Epoch 26/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4154 - acc: 0.9779 - val_loss: 0.8041 - val_acc: 0.8205
-Epoch 27/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4128 - acc: 0.9798 - val_loss: 0.8296 - val_acc: 0.8115
-Epoch 28/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4121 - acc: 0.9798 - val_loss: 0.8241 - val_acc: 0.8074
-Epoch 29/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4093 - acc: 0.9807 - val_loss: 0.8575 - val_acc: 0.7913
-Epoch 30/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4048 - acc: 0.9826 - val_loss: 0.8118 - val_acc: 0.8166
-Epoch 31/100
-50000/50000 [==============================] - 126s 3ms/step - loss: 0.4041 - acc: 0.9837 - val_loss: 0.8375 - val_acc: 0.8082
-Epoch 32/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.4045 - acc: 0.9831 - val_loss: 0.8604 - val_acc: 0.8091
-Epoch 33/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4047 - acc: 0.9823 - val_loss: 0.8797 - val_acc: 0.7931
-Epoch 34/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.4023 - acc: 0.9842 - val_loss: 0.8694 - val_acc: 0.8020
-Epoch 35/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.3995 - acc: 0.9858 - val_loss: 0.8161 - val_acc: 0.8186
-Epoch 36/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3976 - acc: 0.9859 - val_loss: 0.8495 - val_acc: 0.7988
-Epoch 37/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.4021 - acc: 0.9847 - val_loss: 0.8542 - val_acc: 0.8062
-Epoch 38/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3939 - acc: 0.9869 - val_loss: 0.8347 - val_acc: 0.8122
-Epoch 39/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3955 - acc: 0.9856 - val_loss: 0.8521 - val_acc: 0.7993
-Epoch 40/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3907 - acc: 0.9885 - val_loss: 0.9023 - val_acc: 0.7992
-Epoch 41/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3911 - acc: 0.9873 - val_loss: 0.8597 - val_acc: 0.8010
-Epoch 42/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3917 - acc: 0.9885 - val_loss: 0.8968 - val_acc: 0.7936
-Epoch 43/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3931 - acc: 0.9874 - val_loss: 0.8318 - val_acc: 0.8169
-Epoch 44/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3897 - acc: 0.9893 - val_loss: 0.8811 - val_acc: 0.7988
-Epoch 45/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3876 - acc: 0.9888 - val_loss: 0.8453 - val_acc: 0.8094
-Epoch 46/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3876 - acc: 0.9889 - val_loss: 0.8195 - val_acc: 0.8179
-Epoch 47/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3891 - acc: 0.9890 - val_loss: 0.8373 - val_acc: 0.8137
-Epoch 48/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3902 - acc: 0.9888 - val_loss: 0.8457 - val_acc: 0.8120
-Epoch 49/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3864 - acc: 0.9903 - val_loss: 0.9012 - val_acc: 0.7907
-Epoch 50/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3859 - acc: 0.9903 - val_loss: 0.8291 - val_acc: 0.8053
-Epoch 51/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3830 - acc: 0.9915 - val_loss: 0.8494 - val_acc: 0.8139
-Epoch 52/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3828 - acc: 0.9907 - val_loss: 0.8447 - val_acc: 0.8135
-Epoch 53/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3823 - acc: 0.9910 - val_loss: 0.8539 - val_acc: 0.8120
-Epoch 54/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3832 - acc: 0.9905 - val_loss: 0.8592 - val_acc: 0.8098
-Epoch 55/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3823 - acc: 0.9908 - val_loss: 0.8585 - val_acc: 0.8087
-Epoch 56/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3817 - acc: 0.9911 - val_loss: 0.8840 - val_acc: 0.7889
-Epoch 57/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3827 - acc: 0.9914 - val_loss: 0.8205 - val_acc: 0.8250
-Epoch 58/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3818 - acc: 0.9912 - val_loss: 0.8571 - val_acc: 0.8051
-Epoch 59/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3811 - acc: 0.9919 - val_loss: 0.8155 - val_acc: 0.8254
-Epoch 60/100
-50000/50000 [==============================] - 125s 3ms/step - loss: 0.3803 - acc: 0.9919 - val_loss: 0.8617 - val_acc: 0.8040
-Epoch 61/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3793 - acc: 0.9926 - val_loss: 0.8212 - val_acc: 0.8192
-Epoch 62/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3825 - acc: 0.9912 - val_loss: 0.8139 - val_acc: 0.8277
-Epoch 63/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3784 - acc: 0.9923 - val_loss: 0.8304 - val_acc: 0.8121
-Epoch 64/100
-50000/50000 [==============================] - 125s 2ms/step - loss: 0.3809 - acc: 0.9918 - val_loss: 0.7961 - val_acc: 0.8289
-Epoch 65/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3750 - acc: 0.9930 - val_loss: 0.8676 - val_acc: 0.8110
-Epoch 66/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3789 - acc: 0.9928 - val_loss: 0.8308 - val_acc: 0.8148
-Epoch 67/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3783 - acc: 0.9929 - val_loss: 0.8595 - val_acc: 0.8097
-Epoch 68/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3758 - acc: 0.9935 - val_loss: 0.8359 - val_acc: 0.8065
-Epoch 69/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3784 - acc: 0.9927 - val_loss: 0.8189 - val_acc: 0.8255
-Epoch 70/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3786 - acc: 0.9924 - val_loss: 0.8754 - val_acc: 0.8001
-Epoch 71/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3749 - acc: 0.9936 - val_loss: 0.8188 - val_acc: 0.8262
-Epoch 72/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3758 - acc: 0.9932 - val_loss: 0.8540 - val_acc: 0.8169
-Epoch 73/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3740 - acc: 0.9934 - val_loss: 0.8127 - val_acc: 0.8258
-Epoch 74/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3749 - acc: 0.9932 - val_loss: 0.8662 - val_acc: 0.8018
-Epoch 75/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3721 - acc: 0.9941 - val_loss: 0.8359 - val_acc: 0.8213
-Epoch 76/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3746 - acc: 0.9937 - val_loss: 0.8462 - val_acc: 0.8178
-Epoch 77/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3741 - acc: 0.9936 - val_loss: 0.8983 - val_acc: 0.7972
-Epoch 78/100
-50000/50000 [==============================] - 122s 2ms/step - loss: 0.3751 - acc: 0.9933 - val_loss: 0.8525 - val_acc: 0.8173
-Epoch 79/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3762 - acc: 0.9931 - val_loss: 0.8190 - val_acc: 0.8201
-Epoch 80/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3737 - acc: 0.9940 - val_loss: 0.8441 - val_acc: 0.8196
-Epoch 81/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3729 - acc: 0.9935 - val_loss: 0.8151 - val_acc: 0.8267
-Epoch 82/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3735 - acc: 0.9938 - val_loss: 0.8405 - val_acc: 0.8163
-Epoch 83/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3723 - acc: 0.9939 - val_loss: 0.8225 - val_acc: 0.8243
-Epoch 84/100
-50000/50000 [==============================] - 123s 2ms/step - loss: 0.3738 - acc: 0.9938 - val_loss: 0.8413 - val_acc: 0.8115
-Epoch 85/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3714 - acc: 0.9947 - val_loss: 0.9080 - val_acc: 0.7932
-Epoch 86/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3744 - acc: 0.9942 - val_loss: 0.8467 - val_acc: 0.8135
-Epoch 87/100
-50000/50000 [==============================] - 124s 2ms/step - loss: 0.3705 - acc: 0.9948 - val_loss: 0.8491 - val_acc: 0.8163
-Epoch 88/100
-50000/50000 [==============================] - 128s 3ms/step - loss: 0.3733 - acc: 0.9944 - val_loss: 0.8005 - val_acc: 0.8214
-Epoch 89/100
-50000/50000 [==============================] - 134s 3ms/step - loss: 0.3693 - acc: 0.9949 - val_loss: 0.7791 - val_acc: 0.8321
-Epoch 90/100
-50000/50000 [==============================] - 135s 3ms/step - loss: 0.3724 - acc: 0.9942 - val_loss: 0.8458 - val_acc: 0.8124
-Epoch 91/100
-50000/50000 [==============================] - 128s 3ms/step - loss: 0.3732 - acc: 0.9947 - val_loss: 0.8315 - val_acc: 0.8164
-Epoch 92/100
-50000/50000 [==============================] - 127s 3ms/step - loss: 0.3699 - acc: 0.9950 - val_loss: 0.8140 - val_acc: 0.8226
-Epoch 93/100
-50000/50000 [==============================] - 131s 3ms/step - loss: 0.3694 - acc: 0.9950 - val_loss: 0.8342 - val_acc: 0.8210
-Epoch 94/100
-50000/50000 [==============================] - 134s 3ms/step - loss: 0.3698 - acc: 0.9946 - val_loss: 0.8938 - val_acc: 0.8019
-Epoch 95/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3698 - acc: 0.9946 - val_loss: 0.8771 - val_acc: 0.8066
-Epoch 96/100
-50000/50000 [==============================] - 164s 3ms/step - loss: 0.3712 - acc: 0.9946 - val_loss: 0.8396 - val_acc: 0.8211
-Epoch 97/100
-50000/50000 [==============================] - 155s 3ms/step - loss: 0.3689 - acc: 0.9949 - val_loss: 0.8728 - val_acc: 0.8112
-Epoch 98/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3663 - acc: 0.9953 - val_loss: 0.9615 - val_acc: 0.7902
-Epoch 99/100
-50000/50000 [==============================] - 133s 3ms/step - loss: 0.3714 - acc: 0.9944 - val_loss: 0.8414 - val_acc: 0.8188
-Epoch 100/100
-50000/50000 [==============================] - 138s 3ms/step - loss: 0.3682 - acc: 0.9956 - val_loss: 0.8055 - val_acc: 0.8266
+<div class="codehilite"><pre><span></span><span class="n">Train</span> <span class="k">on</span> <span class="mi">50000</span> <span class="n">samples</span><span class="p">,</span> <span class="n">validate</span> <span class="k">on</span> <span class="mi">10000</span> <span class="n">samples</span>
+<span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">131</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5733</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4533</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">6368</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4244</span>
+<span class="n">Epoch</span> <span class="mi">2</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1485</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6387</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">8497</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3764</span>
+<span class="n">Epoch</span> <span class="mi">3</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9641</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7207</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5696</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4794</span>
+<span class="n">Epoch</span> <span class="mi">4</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8452</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7728</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5765</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4669</span>
+<span class="n">Epoch</span> <span class="mi">5</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7553</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8114</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0653</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6928</span>
+<span class="n">Epoch</span> <span class="mi">6</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6841</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8447</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0944</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6880</span>
+<span class="n">Epoch</span> <span class="mi">7</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6356</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8685</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9909</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7317</span>
+<span class="n">Epoch</span> <span class="mi">8</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5907</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8910</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9453</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7446</span>
+<span class="n">Epoch</span> <span class="mi">9</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5610</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9043</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9441</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7460</span>
+<span class="n">Epoch</span> <span class="mi">10</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5295</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9201</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8892</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7679</span>
+<span class="n">Epoch</span> <span class="mi">11</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5100</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9309</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8808</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7818</span>
+<span class="n">Epoch</span> <span class="mi">12</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4926</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9397</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8404</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7894</span>
+<span class="n">Epoch</span> <span class="mi">13</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4807</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9470</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8600</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7928</span>
+<span class="n">Epoch</span> <span class="mi">14</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4661</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9529</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9046</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7732</span>
+<span class="n">Epoch</span> <span class="mi">15</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4588</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9571</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8505</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7965</span>
+<span class="n">Epoch</span> <span class="mi">16</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4558</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9593</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8748</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7859</span>
+<span class="n">Epoch</span> <span class="mi">17</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4434</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9649</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9109</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7656</span>
+<span class="n">Epoch</span> <span class="mi">18</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4449</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9643</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8532</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7971</span>
+<span class="n">Epoch</span> <span class="mi">19</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4349</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9701</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8677</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7951</span>
+<span class="n">Epoch</span> <span class="mi">20</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4351</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9698</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9145</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7740</span>
+<span class="n">Epoch</span> <span class="mi">21</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4268</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9740</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8308</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8065</span>
+<span class="n">Epoch</span> <span class="mi">22</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4243</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9741</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8229</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8075</span>
+<span class="n">Epoch</span> <span class="mi">23</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4201</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9764</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8411</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8062</span>
+<span class="n">Epoch</span> <span class="mi">24</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4190</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9769</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8649</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7951</span>
+<span class="n">Epoch</span> <span class="mi">25</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4139</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9787</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8257</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8071</span>
+<span class="n">Epoch</span> <span class="mi">26</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4154</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9779</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8041</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8205</span>
+<span class="n">Epoch</span> <span class="mi">27</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4128</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9798</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8296</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8115</span>
+<span class="n">Epoch</span> <span class="mi">28</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4121</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9798</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8241</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8074</span>
+<span class="n">Epoch</span> <span class="mi">29</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4093</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9807</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8575</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7913</span>
+<span class="n">Epoch</span> <span class="mi">30</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4048</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9826</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8118</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8166</span>
+<span class="n">Epoch</span> <span class="mi">31</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">126</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4041</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9837</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8375</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8082</span>
+<span class="n">Epoch</span> <span class="mi">32</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4045</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9831</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8604</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8091</span>
+<span class="n">Epoch</span> <span class="mi">33</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4047</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9823</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8797</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7931</span>
+<span class="n">Epoch</span> <span class="mi">34</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4023</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9842</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8694</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8020</span>
+<span class="n">Epoch</span> <span class="mi">35</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3995</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9858</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8161</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8186</span>
+<span class="n">Epoch</span> <span class="mi">36</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3976</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9859</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8495</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7988</span>
+<span class="n">Epoch</span> <span class="mi">37</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4021</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9847</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8542</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8062</span>
+<span class="n">Epoch</span> <span class="mi">38</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3939</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9869</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8347</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8122</span>
+<span class="n">Epoch</span> <span class="mi">39</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3955</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9856</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8521</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7993</span>
+<span class="n">Epoch</span> <span class="mi">40</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3907</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9885</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9023</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7992</span>
+<span class="n">Epoch</span> <span class="mi">41</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3911</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9873</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8597</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8010</span>
+<span class="n">Epoch</span> <span class="mi">42</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3917</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9885</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8968</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7936</span>
+<span class="n">Epoch</span> <span class="mi">43</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3931</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9874</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8318</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8169</span>
+<span class="n">Epoch</span> <span class="mi">44</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3897</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9893</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8811</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7988</span>
+<span class="n">Epoch</span> <span class="mi">45</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3876</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9888</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8453</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8094</span>
+<span class="n">Epoch</span> <span class="mi">46</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3876</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9889</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8195</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8179</span>
+<span class="n">Epoch</span> <span class="mi">47</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3891</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9890</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8373</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8137</span>
+<span class="n">Epoch</span> <span class="mi">48</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3902</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9888</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8457</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8120</span>
+<span class="n">Epoch</span> <span class="mi">49</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3864</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9903</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9012</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7907</span>
+<span class="n">Epoch</span> <span class="mi">50</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3859</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9903</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8291</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8053</span>
+<span class="n">Epoch</span> <span class="mi">51</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3830</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9915</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8494</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8139</span>
+<span class="n">Epoch</span> <span class="mi">52</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3828</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9907</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8447</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8135</span>
+<span class="n">Epoch</span> <span class="mi">53</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3823</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9910</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8539</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8120</span>
+<span class="n">Epoch</span> <span class="mi">54</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3832</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9905</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8592</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8098</span>
+<span class="n">Epoch</span> <span class="mi">55</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3823</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9908</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8585</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8087</span>
+<span class="n">Epoch</span> <span class="mi">56</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3817</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9911</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8840</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7889</span>
+<span class="n">Epoch</span> <span class="mi">57</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3827</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9914</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8205</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8250</span>
+<span class="n">Epoch</span> <span class="mi">58</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3818</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9912</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8571</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8051</span>
+<span class="n">Epoch</span> <span class="mi">59</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3811</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9919</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8155</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8254</span>
+<span class="n">Epoch</span> <span class="mi">60</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3803</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9919</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8617</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8040</span>
+<span class="n">Epoch</span> <span class="mi">61</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3793</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9926</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8212</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8192</span>
+<span class="n">Epoch</span> <span class="mi">62</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3825</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9912</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8139</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8277</span>
+<span class="n">Epoch</span> <span class="mi">63</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3784</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9923</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8304</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8121</span>
+<span class="n">Epoch</span> <span class="mi">64</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">125</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3809</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9918</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7961</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8289</span>
+<span class="n">Epoch</span> <span class="mi">65</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3750</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9930</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8676</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8110</span>
+<span class="n">Epoch</span> <span class="mi">66</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3789</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9928</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8308</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8148</span>
+<span class="n">Epoch</span> <span class="mi">67</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3783</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9929</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8595</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8097</span>
+<span class="n">Epoch</span> <span class="mi">68</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3758</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9935</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8359</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8065</span>
+<span class="n">Epoch</span> <span class="mi">69</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3784</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9927</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8189</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8255</span>
+<span class="n">Epoch</span> <span class="mi">70</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3786</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9924</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8754</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8001</span>
+<span class="n">Epoch</span> <span class="mi">71</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3749</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9936</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8188</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8262</span>
+<span class="n">Epoch</span> <span class="mi">72</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3758</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9932</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8540</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8169</span>
+<span class="n">Epoch</span> <span class="mi">73</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3740</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9934</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8127</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8258</span>
+<span class="n">Epoch</span> <span class="mi">74</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3749</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9932</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8662</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8018</span>
+<span class="n">Epoch</span> <span class="mi">75</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3721</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9941</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8359</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8213</span>
+<span class="n">Epoch</span> <span class="mi">76</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3746</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9937</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8462</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8178</span>
+<span class="n">Epoch</span> <span class="mi">77</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3741</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9936</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8983</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7972</span>
+<span class="n">Epoch</span> <span class="mi">78</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">122</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3751</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9933</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8525</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8173</span>
+<span class="n">Epoch</span> <span class="mi">79</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3762</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9931</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8190</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8201</span>
+<span class="n">Epoch</span> <span class="mi">80</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3737</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9940</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8441</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8196</span>
+<span class="n">Epoch</span> <span class="mi">81</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3729</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9935</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8151</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8267</span>
+<span class="n">Epoch</span> <span class="mi">82</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3735</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9938</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8405</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8163</span>
+<span class="n">Epoch</span> <span class="mi">83</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3723</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9939</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8225</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8243</span>
+<span class="n">Epoch</span> <span class="mi">84</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">123</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3738</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9938</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8413</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8115</span>
+<span class="n">Epoch</span> <span class="mi">85</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3714</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9947</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9080</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7932</span>
+<span class="n">Epoch</span> <span class="mi">86</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3744</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9942</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8467</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8135</span>
+<span class="n">Epoch</span> <span class="mi">87</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">124</span><span class="n">s</span> <span class="mi">2</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3705</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9948</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8491</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8163</span>
+<span class="n">Epoch</span> <span class="mi">88</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">128</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3733</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9944</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8005</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8214</span>
+<span class="n">Epoch</span> <span class="mi">89</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">134</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3693</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9949</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7791</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8321</span>
+<span class="n">Epoch</span> <span class="mi">90</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">135</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3724</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9942</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8458</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8124</span>
+<span class="n">Epoch</span> <span class="mi">91</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">128</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3732</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9947</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8315</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8164</span>
+<span class="n">Epoch</span> <span class="mi">92</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">127</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3699</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9950</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8140</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8226</span>
+<span class="n">Epoch</span> <span class="mi">93</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">131</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3694</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9950</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8342</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8210</span>
+<span class="n">Epoch</span> <span class="mi">94</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">134</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3698</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9946</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8938</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8019</span>
+<span class="n">Epoch</span> <span class="mi">95</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">133</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3698</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9946</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8771</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8066</span>
+<span class="n">Epoch</span> <span class="mi">96</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">164</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3712</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9946</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8396</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8211</span>
+<span class="n">Epoch</span> <span class="mi">97</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">155</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3689</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9949</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8728</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8112</span>
+<span class="n">Epoch</span> <span class="mi">98</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">133</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3663</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9953</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9615</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7902</span>
+<span class="n">Epoch</span> <span class="mi">99</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">133</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3714</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9944</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8414</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8188</span>
+<span class="n">Epoch</span> <span class="mi">100</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">50000</span><span class="o">/</span><span class="mi">50000</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">138</span><span class="n">s</span> <span class="mi">3</span><span class="n">ms</span><span class="o">/</span><span class="n">step</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3682</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9956</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8055</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8266</span>
 </pre></div>
 
 
@@ -1023,8 +345,8 @@ Epoch 100/100
 <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>0.9956000019311905
-0.8320999944210052
+<div class="codehilite"><pre><span></span><span class="mi">0</span><span class="p">.</span><span class="mi">9956000019311905</span>
+<span class="mi">0</span><span class="p">.</span><span class="mi">8320999944210052</span>
 </pre></div>
 
 
@@ -1040,98 +362,9 @@ Epoch 100/100
 <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">trained_model</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>0.3663262344896793
-0.7790719392895699
+<div class="codehilite"><pre><span></span><span class="mi">0</span><span class="p">.</span><span class="mi">3663262344896793</span>
+<span class="mi">0</span><span class="p">.</span><span class="mi">7790719392895699</span>
 </pre></div>
 
 
-<p><img alt="png" src="output_13_1.png" /></p>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../mnist/" title="Introduction to BNNs with Larq" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Introduction to BNNs with Larq
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                BinaryNet on CIFAR10 (Advanced)
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-  <div class="md-footer-social">
-    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
-    
-      <a href="https://github.com/plumerai" class="md-footer-social__link fa fa-github"></a>
-    
-      <a href="https://twitter.com/PlumeraiLab" class="md-footer-social__link fa fa-twitter"></a>
-    
-      <a href="https://www.linkedin.com/company/plumerai/" class="md-footer-social__link fa fa-linkedin"></a>
-    
-  </div>
-
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/application.39abc4af.js"></script>
-      
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
-      
-    
-  </body>
-</html>
+<p><img alt="png" src="output_13_1.png" /></p></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../mnist/" title="Introduction to BNNs with Larq" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Previous</span>Introduction to BNNs with Larq</span></div></a><a href="../binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">Next</span>BinaryNet on CIFAR10 (Advanced)</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright">powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div><div class="md-footer-social"><link rel="stylesheet" href="../../assets/fonts/font-awesome.css"> <a href="https://github.com/plumerai" class="md-footer-social__link fa fa-github"></a>  <a href="https://twitter.com/PlumeraiLab" class="md-footer-social__link fa fa-twitter"></a>  <a href="https://www.linkedin.com/company/plumerai/" class="md-footer-social__link fa fa-linkedin"></a> </div></div></div></footer></div><script src="../../assets/javascripts/application.b260a35d.js"></script><script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script></body></html>
