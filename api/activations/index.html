@@ -1,4 +1,4 @@
-<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="An Open Source Machine Learning Framework for Training Extreme Quantized Neural Networks"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.0"><title>Activations - Larq</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#2196f3"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../custom.css"></head><body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#larqactivations" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="../.." title="Larq" class="md-header-nav__button md-logo"><i class="md-icon">developer_board</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Larq</span><span class="md-header-nav__topic">Activations</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">Type to start searching</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href="../.." title="Home" class="md-tabs__link">Home</a></li><li class="md-tabs__item"><a href="../../examples/mnist/" title="Examples" class="md-tabs__link">Examples</a></li><li class="md-tabs__item"><a href="../layers/" title="API" class="md-tabs__link md-tabs__link--active">API</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="../.." title="Larq" class="md-nav__button md-logo"><i class="md-icon">developer_board</i></a>Larq</label><div class="md-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1"><label class="md-nav__link" for="nav-1">Home</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-1">Home</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Getting Started" class="md-nav__link">Getting Started</a></li><li class="md-nav__item"><a href="../../guide/" title="User Guide" class="md-nav__link">User Guide</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3"><label class="md-nav__link" for="nav-1-3">Developer Guide</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-1-3">Developer Guide</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../contributing/" title="Contributing Guide" class="md-nav__link">Contributing Guide</a></li><li class="md-nav__item"><a href="../../code_of_conduct/" title="Code of Conduct" class="md-nav__link">Code of Conduct</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Examples</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Examples</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../examples/mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">Introduction to BNNs with Larq</a></li><li class="md-nav__item"><a href="../../examples/binarynet_cifar10/" title="BinaryNet on CIFAR10" class="md-nav__link">BinaryNet on CIFAR10</a></li><li class="md-nav__item"><a href="../../examples/binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">BinaryNet on CIFAR10 (Advanced)</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked><label class="md-nav__link" for="nav-3">API</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">API</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../layers/" title="Layers" class="md-nav__link">Layers</a></li><li class="md-nav__item"><a href="../quantizers/" title="Quantizers" class="md-nav__link">Quantizers</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">Activations</label><a href="./" title="Activations" class="md-nav__link md-nav__link--active">Activations</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#hard_tanh" title="hard_tanh" class="md-nav__link">hard_tanh</a></li><li class="md-nav__item"><a href="#leaky_tanh" title="leaky_tanh" class="md-nav__link">leaky_tanh</a></li></ul></nav></li><li class="md-nav__item"><a href="../constraints/" title="Constraints" class="md-nav__link">Constraints</a></li><li class="md-nav__item"><a href="../callbacks/" title="Callbacks" class="md-nav__link">Callbacks</a></li><li class="md-nav__item"><a href="../optimizers/" title="Optimizers" class="md-nav__link">Optimizers</a></li><li class="md-nav__item"><a href="../models/" title="Models" class="md-nav__link">Models</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#hard_tanh" title="hard_tanh" class="md-nav__link">hard_tanh</a></li><li class="md-nav__item"><a href="#leaky_tanh" title="leaky_tanh" class="md-nav__link">leaky_tanh</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="larqactivations">larq.activations<a class="headerlink" href="#larqactivations" title="Permanent link">&para;</a></h1>
+<!doctype html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="An Open Source Machine Learning Framework for Training Extreme Quantized Neural Networks"><meta name="lang:clipboard.copy" content="Copy to clipboard"><meta name="lang:clipboard.copied" content="Copied to clipboard"><meta name="lang:search.language" content="en"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="No matching documents"><meta name="lang:search.result.one" content="1 matching document"><meta name="lang:search.result.other" content="# matching documents"><meta name="lang:search.tokenizer" content="[\s\-]+"><link rel="shortcut icon" href="../../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>Activations - Larq</title><link rel="stylesheet" href="../../assets/stylesheets/application.4031d38b.css"><link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css"><meta name="theme-color" content="#2196f3"><script src="../../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../../assets/fonts/material-icons.css"><link rel="stylesheet" href="../../custom.css"></head><body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#larqactivations" tabindex="1" class="md-skip">Skip to content </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="../.." title="Larq" class="md-header-nav__button md-logo"><i class="md-icon">developer_board</i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Larq</span><span class="md-header-nav__topic">Activations</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">Type to start searching</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href="../.." title="Home" class="md-tabs__link">Home</a></li><li class="md-tabs__item"><a href="../../examples/mnist/" title="Examples" class="md-tabs__link">Examples</a></li><li class="md-tabs__item"><a href="../layers/" title="API" class="md-tabs__link md-tabs__link--active">API</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="../.." title="Larq" class="md-nav__button md-logo"><i class="md-icon">developer_board</i></a>Larq</label><div class="md-nav__source"><a href="https://github.com/plumerai/larq" title="Go to repository" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">plumerai/larq</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1"><label class="md-nav__link" for="nav-1">Home</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-1">Home</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../.." title="Getting Started" class="md-nav__link">Getting Started</a></li><li class="md-nav__item"><a href="../../guide/" title="User Guide" class="md-nav__link">User Guide</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3"><label class="md-nav__link" for="nav-1-3">Developer Guide</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-1-3">Developer Guide</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../contributing/" title="Contributing Guide" class="md-nav__link">Contributing Guide</a></li><li class="md-nav__item"><a href="../../code_of_conduct/" title="Code of Conduct" class="md-nav__link">Code of Conduct</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Examples</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Examples</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../examples/mnist/" title="Introduction to BNNs with Larq" class="md-nav__link">Introduction to BNNs with Larq</a></li><li class="md-nav__item"><a href="../../examples/binarynet_cifar10/" title="BinaryNet on CIFAR10" class="md-nav__link">BinaryNet on CIFAR10</a></li><li class="md-nav__item"><a href="../../examples/binarynet_advanced_cifar10/" title="BinaryNet on CIFAR10 (Advanced)" class="md-nav__link">BinaryNet on CIFAR10 (Advanced)</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked><label class="md-nav__link" for="nav-3">API</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">API</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../layers/" title="Layers" class="md-nav__link">Layers</a></li><li class="md-nav__item"><a href="../quantizers/" title="Quantizers" class="md-nav__link">Quantizers</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">Activations</label><a href="./" title="Activations" class="md-nav__link md-nav__link--active">Activations</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#hard_tanh" title="hard_tanh" class="md-nav__link">hard_tanh</a></li><li class="md-nav__item"><a href="#leaky_tanh" title="leaky_tanh" class="md-nav__link">leaky_tanh</a></li></ul></nav></li><li class="md-nav__item"><a href="../constraints/" title="Constraints" class="md-nav__link">Constraints</a></li><li class="md-nav__item"><a href="../callbacks/" title="Callbacks" class="md-nav__link">Callbacks</a></li><li class="md-nav__item"><a href="../optimizers/" title="Optimizers" class="md-nav__link">Optimizers</a></li><li class="md-nav__item"><a href="../models/" title="Models" class="md-nav__link">Models</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">Table of contents</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#hard_tanh" title="hard_tanh" class="md-nav__link">hard_tanh</a></li><li class="md-nav__item"><a href="#leaky_tanh" title="leaky_tanh" class="md-nav__link">leaky_tanh</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><h1 id="larqactivations">larq.activations<a class="headerlink" href="#larqactivations" title="Permanent link">&para;</a></h1>
 <p>Activations can either be used through an <code>Activation</code> layer, or through the
 <code>activation</code> argument supported by all forward layers:</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
@@ -16,7 +16,7 @@
 <div class="codehilite"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lq</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">QuantDense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">lq</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">hard_tanh</span><span class="p">))</span>
 </pre></div>
 
-<h2 id="hard_tanh">hard_tanh<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/activations.py#L30" title="Source code"></a><a class="headerlink" href="#hard_tanh" title="Permanent link">&para;</a></h2>
+<h2 id="hard_tanh">hard_tanh<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/activations.py#L30" title="Source Code"></a><a class="headerlink" href="#hard_tanh" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">hard_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 Hard tanh activation function.
@@ -39,9 +39,9 @@ Hard tanh activation function.
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m2c2604ca69" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
+       <path id="mbc0186c62e" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
       </defs>
-      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_1">
       <text transform="rotate(-0 52.852 185.05)" x="52.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
@@ -49,7 +49,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_2">
      <g id="line2d_2">
-      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_2">
       <text transform="rotate(-0 106.35 185.05)" x="106.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
@@ -57,7 +57,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
-      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_3">
       <text transform="rotate(-0 159.85 185.05)" x="159.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
@@ -65,7 +65,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
-      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_4">
       <text transform="rotate(-0 213.35 185.05)" x="213.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
@@ -73,7 +73,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_5">
      <g id="line2d_5">
-      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_5">
       <text transform="rotate(-0 266.84 185.05)" x="266.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
@@ -87,9 +87,9 @@ Hard tanh activation function.
     <g id="ytick_1">
      <g id="line2d_6">
       <defs>
-       <path id="ma06a1f4451" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
+       <path id="m22c5c0b17d" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
       </defs>
-      <use x="42.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="42.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_7">
       <text transform="rotate(-0 35.152 166.89)" x="35.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">−1.0</text>
@@ -97,7 +97,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_2">
      <g id="line2d_7">
-      <use x="42.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="42.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_8">
       <text transform="rotate(-0 35.152 131.71)" x="35.152344" y="131.706818" font-family="Roboto" font-size="11px" text-anchor="end">−0.5</text>
@@ -105,7 +105,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_3">
      <g id="line2d_8">
-      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_9">
       <text transform="rotate(-0 35.152 96.525)" x="35.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
@@ -113,7 +113,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_4">
      <g id="line2d_9">
-      <use x="42.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="42.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_10">
       <text transform="rotate(-0 35.152 61.343)" x="35.152344" y="61.343182" font-family="Roboto" font-size="11px" text-anchor="end">0.5</text>
@@ -121,7 +121,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_5">
      <g id="line2d_10">
-      <use x="42.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="42.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_11">
       <text transform="rotate(-0 35.152 26.161)" x="35.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
@@ -132,7 +132,7 @@ Hard tanh activation function.
     </g>
    </g>
    <g id="line2d_11">
-    <path d="m52.852 162.76h53.176l0.42884-0.14101 106.78-140.45 0.42884-0.14101h53.176v0" clip-path="url(#pd60681f5ef)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+    <path d="m52.852 162.76h53.176l0.42884-0.14101 106.78-140.45 0.42884-0.14101h53.176v0" clip-path="url(#p3af842a26f)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
    </g>
    <g id="patch_3">
     <path d="m42.152 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
@@ -157,7 +157,7 @@ Hard tanh activation function.
    <g id="matplotlib.axis_3">
     <g id="xtick_6">
      <g id="line2d_12">
-      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_14">
       <text transform="rotate(-0 333.85 185.05)" x="333.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
@@ -165,7 +165,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_7">
      <g id="line2d_13">
-      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_15">
       <text transform="rotate(-0 387.35 185.05)" x="387.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
@@ -173,7 +173,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_8">
      <g id="line2d_14">
-      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_16">
       <text transform="rotate(-0 440.85 185.05)" x="440.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
@@ -181,7 +181,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_9">
      <g id="line2d_15">
-      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_17">
       <text transform="rotate(-0 494.35 185.05)" x="494.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
@@ -189,7 +189,7 @@ Hard tanh activation function.
     </g>
     <g id="xtick_10">
      <g id="line2d_16">
-      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c2604ca69"/>
+      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mbc0186c62e"/>
      </g>
      <g id="text_18">
       <text transform="rotate(-0 547.84 185.05)" x="547.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
@@ -202,7 +202,7 @@ Hard tanh activation function.
    <g id="matplotlib.axis_4">
     <g id="ytick_6">
      <g id="line2d_17">
-      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_20">
       <text transform="rotate(-0 316.15 166.89)" x="316.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
@@ -210,7 +210,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_7">
      <g id="line2d_18">
-      <use x="323.152344" y="134.618182" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="134.618182" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_21">
       <text transform="rotate(-0 316.15 138.74)" x="316.152344" y="138.743182" font-family="Roboto" font-size="11px" text-anchor="end">0.2</text>
@@ -218,7 +218,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_8">
      <g id="line2d_19">
-      <use x="323.152344" y="106.472727" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="106.472727" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_22">
       <text transform="rotate(-0 316.15 110.6)" x="316.152344" y="110.597727" font-family="Roboto" font-size="11px" text-anchor="end">0.4</text>
@@ -226,7 +226,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_9">
      <g id="line2d_20">
-      <use x="323.152344" y="78.327273" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="78.327273" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_23">
       <text transform="rotate(-0 316.15 82.452)" x="316.152344" y="82.452273" font-family="Roboto" font-size="11px" text-anchor="end">0.6</text>
@@ -234,7 +234,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_10">
      <g id="line2d_21">
-      <use x="323.152344" y="50.181818" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="50.181818" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_24">
       <text transform="rotate(-0 316.15 54.307)" x="316.152344" y="54.306818" font-family="Roboto" font-size="11px" text-anchor="end">0.8</text>
@@ -242,7 +242,7 @@ Hard tanh activation function.
     </g>
     <g id="ytick_11">
      <g id="line2d_22">
-      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#ma06a1f4451"/>
+      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m22c5c0b17d"/>
      </g>
      <g id="text_25">
       <text transform="rotate(-0 316.15 26.161)" x="316.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
@@ -253,7 +253,7 @@ Hard tanh activation function.
     </g>
    </g>
    <g id="line2d_23">
-    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#p799da57b75)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#pcf5dd7b90e)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
    </g>
    <g id="patch_8">
     <path d="m323.15 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
@@ -273,10 +273,10 @@ Hard tanh activation function.
   </g>
  </g>
  <defs>
-  <clipPath id="pd60681f5ef">
+  <clipPath id="p3af842a26f">
    <rect x="42.152" y="15" width="235.39" height="154.8"/>
   </clipPath>
-  <clipPath id="p799da57b75">
+  <clipPath id="pcf5dd7b90e">
    <rect x="323.15" y="15" width="235.39" height="154.8"/>
   </clipPath>
  </defs>
@@ -288,7 +288,7 @@ Hard tanh activation function.
 </ul>
 <p><strong>Returns</strong></p>
 <p>Hard tanh activation.</p>
-<h2 id="leaky_tanh">leaky_tanh<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/activations.py#L46" title="Source code"></a><a class="headerlink" href="#leaky_tanh" title="Permanent link">&para;</a></h2>
+<h2 id="leaky_tanh">leaky_tanh<a class="headerlink code-link" style="float:right;" href="https://github.com/plumerai/larq/blob/master/larq/activations.py#L46" title="Source Code"></a><a class="headerlink" href="#leaky_tanh" title="Permanent link">&para;</a></h2>
 <p><div class="codehilite"><pre><span></span><span class="n">leaky_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 Leaky tanh activation function.
@@ -312,9 +312,9 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m2c3f13c04c" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
+       <path id="mc137eb0c52" d="m0 0v3.5" stroke="#000" stroke-width=".8"/>
       </defs>
-      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="52.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_1">
       <text transform="rotate(-0 52.852 185.05)" x="52.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
@@ -322,7 +322,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_2">
      <g id="line2d_2">
-      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="106.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_2">
       <text transform="rotate(-0 106.35 185.05)" x="106.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
@@ -330,7 +330,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
-      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="159.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_3">
       <text transform="rotate(-0 159.85 185.05)" x="159.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
@@ -338,7 +338,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
-      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="213.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_4">
       <text transform="rotate(-0 213.35 185.05)" x="213.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
@@ -346,7 +346,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_5">
      <g id="line2d_5">
-      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="266.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_5">
       <text transform="rotate(-0 266.84 185.05)" x="266.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
@@ -360,9 +360,9 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     <g id="ytick_1">
      <g id="line2d_6">
       <defs>
-       <path id="mb4b74eecda" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
+       <path id="m487d46523d" d="m0 0h-3.5" stroke="#000" stroke-width=".8"/>
       </defs>
-      <use x="42.152344" y="151.036364" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="42.152344" y="151.036364" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_7">
       <text transform="rotate(-0 35.152 155.16)" x="35.152344" y="155.161364" font-family="Roboto" font-size="11px" text-anchor="end">−1.0</text>
@@ -370,7 +370,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_2">
      <g id="line2d_7">
-      <use x="42.152344" y="121.718182" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="42.152344" y="121.718182" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_8">
       <text transform="rotate(-0 35.152 125.84)" x="35.152344" y="125.843182" font-family="Roboto" font-size="11px" text-anchor="end">−0.5</text>
@@ -378,7 +378,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_3">
      <g id="line2d_8">
-      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="42.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_9">
       <text transform="rotate(-0 35.152 96.525)" x="35.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.0</text>
@@ -386,7 +386,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_4">
      <g id="line2d_9">
-      <use x="42.152344" y="63.081818" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="42.152344" y="63.081818" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_10">
       <text transform="rotate(-0 35.152 67.207)" x="35.152344" y="67.206818" font-family="Roboto" font-size="11px" text-anchor="end">0.5</text>
@@ -394,7 +394,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_5">
      <g id="line2d_10">
-      <use x="42.152344" y="33.763636" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="42.152344" y="33.763636" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_11">
       <text transform="rotate(-0 35.152 37.889)" x="35.152344" y="37.888636" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
@@ -405,7 +405,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
    </g>
    <g id="line2d_11">
-    <path d="m52.852 162.76 53.605-11.845 106.78-117.04 0.85768-0.28202 52.747-11.563v0" clip-path="url(#pe7600c0de4)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+    <path d="m52.852 162.76 53.605-11.845 106.78-117.04 0.85768-0.28202 52.747-11.563v0" clip-path="url(#p9aaebc2fc1)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
    </g>
    <g id="patch_3">
     <path d="m42.152 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
@@ -430,7 +430,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
    <g id="matplotlib.axis_3">
     <g id="xtick_6">
      <g id="line2d_12">
-      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="333.851889" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_14">
       <text transform="rotate(-0 333.85 185.05)" x="333.851889" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−2</text>
@@ -438,7 +438,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_7">
      <g id="line2d_13">
-      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="387.349616" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_15">
       <text transform="rotate(-0 387.35 185.05)" x="387.349616" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">−1</text>
@@ -446,7 +446,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_8">
      <g id="line2d_14">
-      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="440.847344" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_16">
       <text transform="rotate(-0 440.85 185.05)" x="440.847344" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">0</text>
@@ -454,7 +454,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_9">
      <g id="line2d_15">
-      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="494.345071" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_17">
       <text transform="rotate(-0 494.35 185.05)" x="494.345071" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">1</text>
@@ -462,7 +462,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="xtick_10">
      <g id="line2d_16">
-      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#m2c3f13c04c"/>
+      <use x="547.842798" y="169.8" stroke="#000000" stroke-width=".8" xlink:href="#mc137eb0c52"/>
      </g>
      <g id="text_18">
       <text transform="rotate(-0 547.84 185.05)" x="547.842798" y="185.05" font-family="Roboto" font-size="11px" text-anchor="middle">2</text>
@@ -475,7 +475,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
    <g id="matplotlib.axis_4">
     <g id="ytick_6">
      <g id="line2d_17">
-      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="323.152344" y="162.763636" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_20">
       <text transform="rotate(-0 316.15 166.89)" x="316.152344" y="166.888636" font-family="Roboto" font-size="11px" text-anchor="end">0.2</text>
@@ -483,7 +483,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_7">
      <g id="line2d_18">
-      <use x="323.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="323.152344" y="127.581818" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_21">
       <text transform="rotate(-0 316.15 131.71)" x="316.152344" y="131.706818" font-family="Roboto" font-size="11px" text-anchor="end">0.4</text>
@@ -491,7 +491,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_8">
      <g id="line2d_19">
-      <use x="323.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="323.152344" y="92.4" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_22">
       <text transform="rotate(-0 316.15 96.525)" x="316.152344" y="96.525" font-family="Roboto" font-size="11px" text-anchor="end">0.6</text>
@@ -499,7 +499,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_9">
      <g id="line2d_20">
-      <use x="323.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="323.152344" y="57.218182" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_23">
       <text transform="rotate(-0 316.15 61.343)" x="316.152344" y="61.343182" font-family="Roboto" font-size="11px" text-anchor="end">0.8</text>
@@ -507,7 +507,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
     <g id="ytick_10">
      <g id="line2d_21">
-      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#mb4b74eecda"/>
+      <use x="323.152344" y="22.036364" stroke="#000000" stroke-width=".8" xlink:href="#m487d46523d"/>
      </g>
      <g id="text_24">
       <text transform="rotate(-0 316.15 26.161)" x="316.152344" y="26.161364" font-family="Roboto" font-size="11px" text-anchor="end">1.0</text>
@@ -518,7 +518,7 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
     </g>
    </g>
    <g id="line2d_22">
-    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#p778ad0cc43)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
+    <path d="m333.85 162.76h53.176l0.42884-140.73h106.78l0.42884 140.73h53.176v0" clip-path="url(#p40c2239421)" fill="none" stroke="#3f51b5" stroke-linecap="square" stroke-width="1.5"/>
    </g>
    <g id="patch_8">
     <path d="m323.15 169.8v-154.8" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".8"/>
@@ -538,10 +538,10 @@ Similar to hard tanh, but with non-zero slopes as in leaky ReLU.</p>
   </g>
  </g>
  <defs>
-  <clipPath id="pe7600c0de4">
+  <clipPath id="p9aaebc2fc1">
    <rect x="42.152" y="15" width="235.39" height="154.8"/>
   </clipPath>
-  <clipPath id="p778ad0cc43">
+  <clipPath id="p40c2239421">
    <rect x="323.15" y="15" width="235.39" height="154.8"/>
   </clipPath>
  </defs>
