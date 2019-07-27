@@ -2,117 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://larq.dev/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/guides/key-concepts/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/guides/bnn-architecture/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/guides/bnn-optimization/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/examples/mnist/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/examples/binarynet_cifar10/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/examples/binarynet_advanced_cifar10/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/layers/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/quantizers/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/activations/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/constraints/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/callbacks/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/optimizers/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/math/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/api/models/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/models/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/models/examples/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/models/api/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/papers/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/contributing/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/code-of-conduct/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/about/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://larq.dev/faq/</loc>
-     <lastmod>2019-07-26</lastmod>
+     <lastmod>2019-07-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
